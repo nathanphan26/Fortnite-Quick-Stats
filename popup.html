@@ -1,14 +1,41 @@
   <!DOCTYPE html>
   <html>
     <head>
-      <script src="popup.js"></script>
       <style>
-
+        body{
+          width: 200px;
+          height: 200px;
+        }
+        .col-container {
+          display: flex;
+          width: 100%;
+        }
+        .col {
+          flex: 1;
+          padding: 16px;
+        }
       </style>
     </head>
     <body>
-      <p id="name">
+      <p>name: <span id="text"></span></p>
+      <div class="col-container">
+        <div class="col">
+          <p>Solo</p>
+          <p>K/D: <span id="kdSolo"></span></p>
+        </div>
+        <div class="col">
+          <p>Duo</p>
+          <p>K/D: <span id="kdDuo"></span></p>
+        </div>
+        <div class="col">
+          <p>Squads</p>
+          <p>K/D: <span id="kdSquad"></span></p>
+        </div>
+      </div>
         
-      </p>
+
+      <input type="text" id="inputName">
+      <button id="nameButton">getname</button>
+      <script src="popup.js"></script>
     </body>
   </html>
