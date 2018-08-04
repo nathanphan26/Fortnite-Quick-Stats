@@ -1,41 +1,135 @@
   <!DOCTYPE html>
   <html>
     <head>
-      <style>
-        body{
-          width: 200px;
-          height: 200px;
-        }
-        .col-container {
-          display: flex;
-          width: 100%;
-        }
-        .col {
-          flex: 1;
-          padding: 16px;
-        }
-      </style>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <link href="popup.css" rel="stylesheet">
     </head>
     <body>
+
+      <input type="text" id="inputName" autofocus="autofocus">
+      <button id="nameButton">getname</button>
+
       <p>name: <span id="text"></span></p>
+
       <div class="col-container">
+
+        <!-- SOLOS -->
         <div class="col">
-          <p>Solo</p>
-          <p>K/D: <span id="kdSolo"></span></p>
+          <p id="soloTitle">Solos</p>
+
+          <div class="colInnerLeft">
+            Wins: <span class="stats" id="winsSolo"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Kills: <span id="killsSolo"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Win %: <span id="winPerSolo"></span>
+          </div>
+
+          <div class="colInnerRight">
+            K/D: <span id="kdSolo"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Top 10: <span id="top10Solo"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Kpm: <span id="kpmSolo"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Top 25: <span id="top25Solo"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Score: <span id="scoreSolo"></span>
+          </div>
+
         </div>
+
+        <!-- DUOS -->
         <div class="col">
-          <p>Duo</p>
-          <p>K/D: <span id="kdDuo"></span></p>
+          <p id="duoTitle">Duos</p>
+
+          <div class="colInnerLeft">
+            Wins: <span id="winsDuo"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Kills: <span id="killsDuo"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Win %: <span id="winPerDuo"></span>
+          </div>
+
+          <div class="colInnerRight">
+            K/D: <span id="kdDuo"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Top 5: <span id="top5Duo"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Kpm: <span id="kpmDuo"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Top 12: <span id="top12Duo"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Score: <span id="scoreDuo"></span>
+          </div>
+
         </div>
+
+
+        <!-- SQUADS -->
         <div class="col">
-          <p>Squads</p>
-          <p>K/D: <span id="kdSquad"></span></p>
+          <p id="squalTitle">Squads</p>
+          
+          <div class="colInnerLeft">
+            Wins: <span id="winsSquad"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Kills: <span id="killsSquad"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Win %: <span id="winPerSquad"></span>
+          </div>
+
+          <div class="colInnerRight">
+            K/D: <span id="kdSquad"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Top 3: <span id="top3Squad"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Kpm: <span id="kpmSquad"></span>
+          </div>
+
+          <div class="colInnerLeft">
+            Top 6: <span id="top6Squad"></span>
+          </div>
+
+          <div class="colInnerRight">
+            Score: <span id="scoreSquad"></span>
+          </div>
+
         </div>
       </div>
         
 
-      <input type="text" id="inputName">
-      <button id="nameButton">getname</button>
       <script src="popup.js"></script>
     </body>
   </html>
