@@ -8,6 +8,12 @@ const params = {
 
 window.addEventListener('load', function load(event){
     var nameButton = document.getElementById('nameButton');
+    document.getElementById('inputName').addEventListener("keyup", function(event){
+    	event.preventDefault();
+    	if(event.keyCode == 13){
+    		nameButton.click();
+    	}
+    });
 
     nameButton.addEventListener('click', function() { 
 		var url = 'https://api.fortnitetracker.com/v1/profile/pc/';
@@ -59,6 +65,8 @@ window.addEventListener('load', function load(event){
 			  	document.getElementById('kpmSquad').innerHTML = res.stats.curr_p9.kpg.displayValue;
 			  	document.getElementById('top6Squad').innerHTML = res.stats.curr_p9.top6.displayValue;
 			  	document.getElementById('scoreSquad').innerHTML = res.stats.curr_p9.score.displayValue;
+			  	document.getElementById('inputName').value = '';
+		  		document.getElementById('inputName').focus();
 			  }
 		  }).
 		  catch(error=>{
