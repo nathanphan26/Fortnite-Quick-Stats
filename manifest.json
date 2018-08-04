@@ -1,7 +1,7 @@
   {
-    "name": "Getting Started Example",
+    "name": "Fortnite Quick Stats",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "Search up your Fortnite stats with a click of a button",
     "background": {
       "scripts": ["background.js"],
       "persistent": false

@@ -1,36 +1,56 @@
 html{
   font-family: 'Roboto', sans-serif;
-  background: #363636;
+  background: #1F1F1F;
   font-size: 20px;
 }
 
 body{
-  width: 700px;
+  width: 500px;
   height: 200px;
   color: white;
 }
 .col-container {
   display: flex;
   width: 100%;
+  margin: none;
+  padding: none;
 }
 .col {
   flex: 1;
-  padding: 16px;
-  justify-content: space-between;
+  padding: 2px;
+  margin: none;
+  /*justify-content: space-between;*/
+  vertical-align: top;
+
 }
+
+.col span{
+  float: right;
+}
+
 .colInnerLeft{
   float: left;
   width: 50%;
   box-sizing:border-box;
+  padding-top: 5px;
   padding-right: 5px;
   padding-bottom: 5px;
+  font-size: 12px;
+  background: #363636;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 .colInnerRight{
   float: right;
   width: 50%;
   box-sizing:border-box;
-  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
   padding-bottom: 5px;
+  font-size: 12px;
+  background: #363636;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .stats{
@@ -38,17 +58,33 @@ body{
   /*font-size: 18px;*/
 }
 
+
+#titleHolder p{
+  margin: 0;
+  padding-left: 5px;
+  vertical-align: top;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
 #soloTitle{
   background: #17C2FE;
   color: #034A63;
+  font-weight: 600;
 }
 
 #duoTitle{
   background: #5CFC7B;
   color: #21592C;
+  font-weight: 600;
 }
 
 #squalTitle{
   background: #C272D9;
   color: #45294D;
+  font-weight: 600;
+}
+
+#text{
+  font-weight: 800;
 }

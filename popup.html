@@ -9,13 +9,15 @@
       <input type="text" id="inputName" autofocus="autofocus">
       <button id="nameButton">getname</button>
 
-      <p>name: <span id="text"></span></p>
+      <p><span id="text"></span></p>
 
       <div class="col-container">
 
         <!-- SOLOS -->
         <div class="col">
-          <p id="soloTitle">Solos</p>
+          <div id="titleHolder">
+            <p id="soloTitle">Solos</p>
+          </div>
 
           <div class="colInnerLeft">
             Wins: <span class="stats" id="winsSolo"></span>
@@ -53,10 +55,11 @@
 
         <!-- DUOS -->
         <div class="col">
-          <p id="duoTitle">Duos</p>
-
+          <div id="titleHolder">
+            <p id="duoTitle">Duos</p>
+          </div>
           <div class="colInnerLeft">
-            Wins: <span id="winsDuo"></span>
+            Wins: <span id="winsDuo">2</span>
           </div>
 
           <div class="colInnerRight">
@@ -92,8 +95,10 @@
 
         <!-- SQUADS -->
         <div class="col">
-          <p id="squalTitle">Squads</p>
-          
+          <div id="titleHolder">
+            <p id="squalTitle">Squads</p>
+          </div>
+
           <div class="colInnerLeft">
             Wins: <span id="winsSquad"></span>
           </div>
