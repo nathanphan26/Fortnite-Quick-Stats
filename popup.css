@@ -12,6 +12,13 @@ body{
   height: 28px;
   color: white;
 }
+
+/*.wrapper{
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+}*/
+
 .col-container {
   display: flex;
   width: 100%;
