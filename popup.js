@@ -12,8 +12,18 @@ $(document).ready(function() {
 });
 
 function getTier(rating, mode){
-	var img = document.createElement("img");
-	img.classList.add('tier');
+	var img;
+
+	if(mode == 1){
+		img = document.getElementById('soloImg');
+	}
+	else if(mode == 2){
+		img = document.getElementById('duoImg');
+	}
+	else if(mode == 3){
+		img = document.getElementById('squadImg');
+	}
+
 	if(rating >= 0 && rating < 1500){
 		img.src = 'images/tier1.png';
 	}
@@ -32,18 +42,6 @@ function getTier(rating, mode){
 	// else if(rating >= 1500 && rating < 3000){
 		
 	// }
-	if(mode == 1){
-		var solo = document.getElementById('ratingSolo');
-		solo.insertBefore(img, solo.firstChild);
-	}
-	else if(mode == 2){
-		var solo = document.getElementById('ratingDuo');
-		solo.insertBefore(img, solo.firstChild);
-	}
-	else if(mode == 3){
-		var solo = document.getElementById('ratingSquad');
-		solo.insertBefore(img, solo.firstChild);
-	}
 }
 
 window.addEventListener('load', function load(event){
