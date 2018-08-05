@@ -3,21 +3,31 @@
     <head>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <link href="popup.css" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
 
-      <input type="text" id="inputName" autofocus="autofocus" placeholder="Search Epic Username...">
-      <select name="platform" id="platform">
-        <option value="pc">PC</option>
-        <option value="xbl">Xbox</option>
-        <option value="ps4">PS4</option>
-      </select>
+      <div id="search">
+        <input type="text" id="inputName" autofocus="autofocus" placeholder="Search Epic Username...">
+        <select name="platform" id="platform">
+          <option value="pc">PC</option>
+          <option value="xbl">Xbox</option>
+          <option value="ps4">PS4</option>
+        </select>
+      </div>
 
       <!-- Display name -->
-      <p><span id="text"></span></p>
+      <!-- <p> -->
+        <div id="name">
+          <div class="circletag">
+            <img src="images/avatar1.png" alt="">
+          </div>
+          <span id="text">daddy natty</span>
+        </div>
+      <!-- </p> -->
 
       <!-- BEGIN COLUMN CONTAINER -->
-      <div class="col-container">
+      <div class="col-container" id="allStats">
 
         <!-- SOLOS -->
         <!-- BEGIN COLUMN -->

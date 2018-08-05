@@ -2,16 +2,20 @@ html{
   font-family: 'Roboto', sans-serif;
   background: #1F1F1F;
   font-size: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 body{
   width: 400px;
-  height: 200px;
+  /*width: 100%;*/
+  height: 28px;
   color: white;
 }
 .col-container {
   display: flex;
   width: 100%;
+  /*width: 400px;*/
   margin: none;
   padding: none;
   padding-bottom: 10px;
@@ -59,6 +63,29 @@ body{
   flex: 1;
 }
 
+.circletag {
+    /*display: table-cell;*/
+    /*float: left;*/
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    text-align: center;
+    vertical-align: middle;
+    /*background-image: url(images/tier3.png);
+    background-size: 150%;
+    background-position:center center;
+    background-repeat:no-repeat;   */ 
+}
+
+.circletag img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+
 .box{
   height: 25%;
   display: table;
@@ -97,12 +124,24 @@ body{
 
 }
 
+#name{
+  height: 50px;
+  display: table;
+}
+
 #inputName{
-  width: 100%;
+  height: 25px;
+  width: 83%;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+#platform{
+  width: 15%;
+  height: 25px;
+  display: inline-block;
 }
 
 #titleHolder{
@@ -143,6 +182,12 @@ body{
 
 #text{
   font-weight: 800;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  /*float: right; */
+  /*width: auto;*/
+  padding-left: 15px;
 }
 
 .rank{

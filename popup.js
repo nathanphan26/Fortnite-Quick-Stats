@@ -5,6 +5,12 @@ const params = {
   method: "GET"
 };
 
+
+$(document).ready(function() {
+	$("#name").hide();
+	$("#allStats").hide();
+});
+
 function getTier(rating, mode){
 	var img = document.createElement("img");
 	img.classList.add('tier');
@@ -113,6 +119,9 @@ window.addEventListener('load', function load(event){
 
 				  	document.getElementById('inputName').value = '';
 			  		document.getElementById('inputName').focus();
+
+			  		jQuery("#allStats").show();
+			  		jQuery("#name").show();
 				  }
 			  }).
 			  catch(error=>{
