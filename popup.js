@@ -39,32 +39,32 @@ window.addEventListener('load', function load(event){
 			  	// Solo stats
 			  	document.getElementById('winsSolo').innerHTML = res.stats.curr_p2.top1.displayValue;
 			  	document.getElementById('killsSolo').innerHTML = res.stats.curr_p2.kills.displayValue;
-			  	document.getElementById('winPerSolo').innerHTML = res.stats.curr_p2.winRatio.displayValue;
+			  	document.getElementById('winPerSolo').innerHTML = res.stats.curr_p2.winRatio.displayValue+"%";
 			  	document.getElementById('kdSolo').innerHTML = res.stats.curr_p2.kd.displayValue;
-			  	document.getElementById('top10Solo').innerHTML = res.stats.curr_p2.top10.displayValue;
-			  	document.getElementById('kpmSolo').innerHTML = res.stats.curr_p2.kpg.displayValue;
-			  	document.getElementById('top25Solo').innerHTML = res.stats.curr_p2.top25.displayValue;
-			  	document.getElementById('scoreSolo').innerHTML = res.stats.curr_p2.score.displayValue;
+			  	// document.getElementById('top10Solo').innerHTML = res.stats.curr_p2.top10.displayValue;
+			  	// document.getElementById('kpmSolo').innerHTML = res.stats.curr_p2.kpg.displayValue;
+			  	// document.getElementById('top25Solo').innerHTML = res.stats.curr_p2.top25.displayValue;
+			  	// document.getElementById('scoreSolo').innerHTML = res.stats.curr_p2.score.displayValue;
 			  	
 			  	// Duo stats
 			  	document.getElementById('winsDuo').innerHTML = res.stats.curr_p10.top1.displayValue;
 			  	document.getElementById('killsDuo').innerHTML = res.stats.curr_p10.kills.displayValue;
-			  	document.getElementById('winPerDuo').innerHTML = res.stats.curr_p10.winRatio.displayValue;
+			  	document.getElementById('winPerDuo').innerHTML = res.stats.curr_p10.winRatio.displayValue+"%";
 			  	document.getElementById('kdDuo').innerHTML = res.stats.curr_p10.kd.displayValue;
-			  	document.getElementById('top5Duo').innerHTML = res.stats.curr_p10.top5.displayValue;
-			  	document.getElementById('kpmDuo').innerHTML = res.stats.curr_p10.kpg.displayValue;
-			  	document.getElementById('top12Duo').innerHTML = res.stats.curr_p10.top12.displayValue;
-			  	document.getElementById('scoreDuo').innerHTML = res.stats.curr_p10.score.displayValue;
+			  	// document.getElementById('top5Duo').innerHTML = res.stats.curr_p10.top5.displayValue;
+			  	// document.getElementById('kpmDuo').innerHTML = res.stats.curr_p10.kpg.displayValue;
+			  	// document.getElementById('top12Duo').innerHTML = res.stats.curr_p10.top12.displayValue;
+			  	// document.getElementById('scoreDuo').innerHTML = res.stats.curr_p10.score.displayValue;
 			  	
 			  	//Squad stats
 			  	document.getElementById('winsSquad').innerHTML = res.stats.curr_p9.top1.displayValue;
 			  	document.getElementById('killsSquad').innerHTML = res.stats.curr_p9.kills.displayValue;
-			  	document.getElementById('winPerSquad').innerHTML = res.stats.curr_p9.winRatio.displayValue;
+			  	document.getElementById('winPerSquad').innerHTML = res.stats.curr_p9.winRatio.displayValue+"%";
 			  	document.getElementById('kdSquad').innerHTML = res.stats.curr_p9.kd.displayValue;
-			  	document.getElementById('top3Squad').innerHTML = res.stats.curr_p9.top3.displayValue;
-			  	document.getElementById('kpmSquad').innerHTML = res.stats.curr_p9.kpg.displayValue;
-			  	document.getElementById('top6Squad').innerHTML = res.stats.curr_p9.top6.displayValue;
-			  	document.getElementById('scoreSquad').innerHTML = res.stats.curr_p9.score.displayValue;
+			  	// document.getElementById('top3Squad').innerHTML = res.stats.curr_p9.top3.displayValue;
+			  	// document.getElementById('kpmSquad').innerHTML = res.stats.curr_p9.kpg.displayValue;
+			  	// document.getElementById('top6Squad').innerHTML = res.stats.curr_p9.top6.displayValue;
+			  	// document.getElementById('scoreSquad').innerHTML = res.stats.curr_p9.score.displayValue;
 			  	document.getElementById('inputName').value = '';
 		  		document.getElementById('inputName').focus();
 			  }
