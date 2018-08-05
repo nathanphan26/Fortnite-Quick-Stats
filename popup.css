@@ -97,6 +97,14 @@ body{
 
 }
 
+#inputName{
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 #titleHolder{
   height: 14%;
   display: table;
