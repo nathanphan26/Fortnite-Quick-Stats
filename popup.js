@@ -5,6 +5,40 @@ const params = {
   method: "GET"
 };
 
+function getTier(rating, mode){
+	var img = document.createElement("img");
+	img.classList.add('tier');
+	if(rating >= 0 && rating < 1500){
+		img.src = 'images/tier1.png';
+	}
+	else if(rating >= 1500 && rating < 3000){
+		img.src = 'images/tier2.png';
+	}
+	else if(rating >= 3000 && rating < 4000){
+		img.src = 'images/tier3.png';
+	}
+	else if(rating >= 4000 && rating < 4500){
+		img.src = 'images/tier4.png';
+	}
+	else if(rating >= 4500 && rating < 5000){
+		img.src = 'images/tier5.png';
+	}
+	// else if(rating >= 1500 && rating < 3000){
+		
+	// }
+	if(mode == 1){
+		var solo = document.getElementById('ratingSolo');
+		solo.insertBefore(img, solo.firstChild);
+	}
+	else if(mode == 2){
+		var solo = document.getElementById('ratingDuo');
+		solo.insertBefore(img, solo.firstChild);
+	}
+	else if(mode == 3){
+		var solo = document.getElementById('ratingSquad');
+		solo.insertBefore(img, solo.firstChild);
+	}
+}
 
 window.addEventListener('load', function load(event){
     var nameButton = document.getElementById('nameButton');
@@ -45,6 +79,14 @@ window.addEventListener('load', function load(event){
 			  	// document.getElementById('kpmSolo').innerHTML = res.stats.curr_p2.kpg.displayValue;
 			  	// document.getElementById('top25Solo').innerHTML = res.stats.curr_p2.top25.displayValue;
 			  	// document.getElementById('scoreSolo').innerHTML = res.stats.curr_p2.score.displayValue;
+			  	document.getElementById('soloRank').innerHTML = res.stats.curr_p2.trnRating.displayValue;
+			  	// if(res.stats.curr_p2.trnRating.valueInt >= 1500 && res.stats.curr_p2.trnRating.valueInt <3000){
+			  	// 	var img = document.createElement("img");
+			  	// 	img.src = 'images/tier2.png';
+			  	// 	img.classList.add('tier');
+			  	// 	document.getElementById('ratingSolo').insertBefore(img, document.getElementById('ratingSolo').firstChild);
+			  	// }
+			  	getTier(res.stats.curr_p2.trnRating.valueInt, 1);
 			  	
 			  	// Duo stats
 			  	document.getElementById('winsDuo').innerHTML = res.stats.curr_p10.top1.displayValue;
@@ -55,7 +97,9 @@ window.addEventListener('load', function load(event){
 			  	// document.getElementById('kpmDuo').innerHTML = res.stats.curr_p10.kpg.displayValue;
 			  	// document.getElementById('top12Duo').innerHTML = res.stats.curr_p10.top12.displayValue;
 			  	// document.getElementById('scoreDuo').innerHTML = res.stats.curr_p10.score.displayValue;
-			  	
+			  	document.getElementById('duoRank').innerHTML = res.stats.curr_p10.trnRating.displayValue;
+			  	getTier(res.stats.curr_p10.trnRating.valueInt, 2);
+
 			  	//Squad stats
 			  	document.getElementById('winsSquad').innerHTML = res.stats.curr_p9.top1.displayValue;
 			  	document.getElementById('killsSquad').innerHTML = res.stats.curr_p9.kills.displayValue;
@@ -65,6 +109,9 @@ window.addEventListener('load', function load(event){
 			  	// document.getElementById('kpmSquad').innerHTML = res.stats.curr_p9.kpg.displayValue;
 			  	// document.getElementById('top6Squad').innerHTML = res.stats.curr_p9.top6.displayValue;
 			  	// document.getElementById('scoreSquad').innerHTML = res.stats.curr_p9.score.displayValue;
+			  	document.getElementById('squadRank').innerHTML = res.stats.curr_p9.trnRating.displayValue;
+			  	getTier(res.stats.curr_p9.trnRating.valueInt, 3);
+
 			  	document.getElementById('inputName').value = '';
 		  		document.getElementById('inputName').focus();
 			  }
