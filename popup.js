@@ -6,10 +6,10 @@ const params = {
 };
 
 
-// $(document).ready(function() {
-// 	$("#name").hide();
-// 	$("#allStats").hide();
-// });
+$(document).ready(function() {
+	$("#name").hide();
+	$("#allStats").hide();
+});
 
 function getTier(rating, mode){
 	var img;
