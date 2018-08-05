@@ -64,16 +64,18 @@ body{
 }
 
 .circletag {
-    /*display: table-cell;*/
+    display: inline-block;
     /*float: left;*/
-    margin-top: 5px;
+    margin-top: 10px;
+    padding: 0;
+    margin-right: 0;
     width: 40px;
     height: 40px;
     background: white;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
-    text-align: center;
-    vertical-align: middle;
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
     /*background-image: url(images/tier3.png);
     background-size: 150%;
     background-position:center center;
@@ -126,6 +128,7 @@ body{
 
 #name{
   height: 50px;
+  width: 100%;
   display: table;
 }
 
@@ -182,9 +185,11 @@ body{
 
 #text{
   font-weight: 800;
-  display: table-cell;
+  display: inline-block;
+  line-height: auto;
   vertical-align: middle;
-  text-align: center;
+  height: 100%;
+  /*text-align: center;*/
   /*float: right; */
   /*width: auto;*/
   padding-left: 15px;
