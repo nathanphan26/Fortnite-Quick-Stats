@@ -13,12 +13,6 @@ body{
   color: white;
 }
 
-/*.wrapper{
-  border-style: solid;
-  border-width: 1px;
-  border-color: white;
-}*/
-
 .col-container {
   display: flex;
   width: 100%;
@@ -81,12 +75,6 @@ body{
     background: white;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
-    /*text-align: center;*/
-    /*vertical-align: middle;*/
-    /*background-image: url(images/tier3.png);
-    background-size: 150%;
-    background-position:center center;
-    background-repeat:no-repeat;   */ 
 }
 
 .circletag img {
@@ -107,7 +95,6 @@ body{
 
 .stats{
   font-weight: 400;
-  /*font-size: 18px;*/
   display: table-cell;
   vertical-align: middle;
 }
@@ -129,8 +116,6 @@ body{
   height: 100%;
   width: auto;
   vertical-align: middle;
-  /*text-align: center;*/
-
 }
 
 #name{
@@ -196,9 +181,6 @@ body{
   line-height: auto;
   vertical-align: middle;
   height: 100%;
-  /*text-align: center;*/
-  /*float: right; */
-  /*width: auto;*/
   padding-left: 15px;
 }
 
