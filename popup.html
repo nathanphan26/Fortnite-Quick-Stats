@@ -3,17 +3,33 @@
     <head>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <link href="popup.css" rel="stylesheet">
+      <script src="includes/jquery.min.js"></script>
     </head>
     <body>
 
-      <input type="text" id="inputName" autofocus="autofocus">
-      <button id="nameButton">getname</button>
+      <div id="search">
+        <input type="text" id="inputName" autofocus="autofocus" placeholder="Search Epic Username...">
+        <select name="platform" id="platform">
+          <option value="pc">PC</option>
+          <option value="xbl">Xbox</option>
+          <option value="ps4">PS4</option>
+        </select>
+      </div>
+
+      <div class="wrapper">
 
       <!-- Display name -->
-      <p><span id="text"></span></p>
+      <!-- <p> -->
+        <div id="name">
+          <div class="circletag">
+            <img src="images/avatar1.png" alt="">
+          </div>
+          <span id="text">daddy natty</span>
+        </div>
+      <!-- </p> -->
 
       <!-- BEGIN COLUMN CONTAINER -->
-      <div class="col-container">
+      <div class="col-container" id="allStats">
 
         <!-- SOLOS -->
         <!-- BEGIN COLUMN -->
@@ -25,10 +41,10 @@
           </div>
 
           <!-- RANKING -->
-          <div class="rating">
-            <!-- <img src="images/tier4.png" alt="tier4" class="tier"> -->
+          <div class="rating" id="ratingSolo">           
+            <img src="" alt="" class="tier" id="soloImg">
             <span></span>
-            <span id="rank">RANK</span>
+            <span class="rank" id="soloRank">RANK</span>
           </div>
 
           <!-- LEFT COLUMN STATS -->
@@ -41,31 +57,14 @@
              <span class="stats">Win %:</span> <span class="stats right" id="winPerSolo"></span>
             </div>
             <div class="box">
-              <span class="stats">Top 10:</span> <span class="stats right" id="top10Solo"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Top 25:</span> <span class="stats right" id="top25Solo"></span>
-            </div>
-
-          </div>
-
-          <!--RIGHT COLUMN STATS -->
-          <div class="colInnerRight">
-
-            <div class="box">
               <span class="stats">Kills:</span> <span class="stats right" id="killsSolo"></span>
             </div>
             <div class="box">
               <span class="stats">K/D:</span> <span class="stats right" id="kdSolo"></span>
             </div>
-            <div class="box">
-              <span class="stats">Kpm:</span> <span class="stats right" id="kpmSolo"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Score:</span> <span class="stats right" id="scoreSolo"></span>
-            </div>
 
           </div>
+
         </div>
         <!-- END COLUMN -->
         <!-- END SOLOS -->
@@ -80,10 +79,10 @@
           </div>
 
           <!-- RANKING -->
-          <div class="rating">
-            <!-- <img src="images/tier4.png" alt="tier4" class="tier"> -->
+          <div class="rating" id="ratingDuo">
+            <img src="images/tier4.png" alt="tier4" class="tier" id="duoImg">
             <span></span>
-            <div id="rank">RANK</div>
+            <div class="rank" id="duoRank">RANK</div>
           </div>
 
           <!-- LEFT COLUMN STATS -->
@@ -96,31 +95,14 @@
               <span class="stats">Win %:</span> <span class="stats right" id="winPerDuo"></span>
             </div>
             <div class="box">
-              <span class="stats">Top 5:</span> <span class="stats right" id="top5Duo"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Top 12:</span> <span class="stats right" id="top12Duo"></span>
-            </div>
-
-          </div>
-  
-          <!-- RIGHT COLUMN STATS -->
-          <div class="colInnerRight">
-
-            <div class="box">
               <span class="stats">Kills:</span> <span class="stats right" id="killsDuo"></span>
             </div>
             <div class="box">
               <span class="stats">K/D:</span> <span class="stats right" id="kdDuo"></span>
             </div>
-            <div class="box">
-              <span class="stats">Kpm:</span> <span class="stats right" id="kpmDuo"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Score:</span> <span class="stats right" id="scoreDuo"></span>
-            </div>
 
           </div>
+  
         </div>
         <!-- END COLUMN  -->
         <!-- END DUOS -->
@@ -135,10 +117,10 @@
           </div>
 
           <!-- RANKING -->
-          <div class="rating">
-            <!-- <img src="images/tier4.png" alt="tier4" class="tier"> -->
+          <div class="rating" id="ratingSquad">
+            <img src="images/tier4.png" alt="tier4" class="tier" id="squadImg">
             <span></span>
-            <div id="rank">RANK</div>
+            <div class="rank" id="squadRank">RANK</div>
           </div>
 
           <!-- LEFT COLUMN STATS -->
@@ -151,36 +133,20 @@
               <span class="stats">Win %:</span> <span class="stats right" id="winPerSquad"></span>
             </div>
             <div class="box">
-              <span class="stats">Top 3:</span> <span class="stats right" id="top3Squad"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Top 6:</span> <span class="stats right" id="top6Squad"></span>
-            </div>
-
-          </div>
-          
-          <!-- RIGHT COLUMN STATS -->
-          <div class="colInnerRight">
-
-            <div class="box">
               <span class="stats">Kills:</span> <span class="stats right" id="killsSquad"></span>
             </div>
             <div class="box">
               <span class="stats">K/D:</span> <span class="stats right" id="kdSquad"></span>
             </div>
-            <div class="box">
-              <span class="stats">Kpm:</span> <span class="stats right" id="kpmSquad"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Score:</span> <span class="stats right" id="scoreSquad"></span>
-            </div>
 
           </div>
+          
         </div>
         <!-- END COLUMN -->
         <!-- END SQUADS -->
       </div>
       <!-- END COLUMN CONTAINER -->
+    </div>
         
 
       <!-- SCRIPTS -->
