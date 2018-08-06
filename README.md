@@ -1,18 +1,20 @@
-# FortniteMiniStats
+# FortniteQuickStats v1.0
 
 Quick way to view your Fortnite stats.
 
 ### Tasks
+#### v1.0
+- [x] Search bar CSS
+- [x] Select platfrom
+- [x] TRN Rating
+- [x] Hide stats until search
+
+#### v1.1
+- [ ] Save Name to options
 - [ ] CSS Organization/ Optimization
-- [ ] Ranking content
-- [ ] Hide stats until search
-- [ ] Hide Api Key
-- [ ] Search bar CSS
-- [ ] Select platfrom
 
-
-### Future Tasks
+#### Future Tasks
 - [ ] Allow multiple stats displayed
 - [ ] Custimization of stats displayed
-- [ ] Save Name to options
 - [ ] Recent Matches
+- [ ] Hide Api Key
