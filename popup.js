@@ -61,6 +61,11 @@ function getTier(rating, mode){
 
 window.addEventListener('load', function load(event){
 
+	chrome.storage.local.get(['epicUsername'], function(result) {
+          console.log('Stored Username is ' + result.epicUsername);
+        });
+	
+	
     document.getElementById('inputName').addEventListener("keyup", function(event){
 
     	event.preventDefault();
