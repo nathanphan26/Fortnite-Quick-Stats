@@ -5,9 +5,13 @@
 //   method: "GET"
 // };
 
-var params;
+// var params;
 
 // var monkey;
+
+
+function getStats(url){
+var param;
 
 $(document).ready(function() {
 	$("#name").hide();
@@ -15,24 +19,14 @@ $(document).ready(function() {
 
 	$.get("includes/help.stats", function(data) {
 		// monkey = data;
-		params = {
+		param = {
 			headers:{
 				"trn-api-key": data
 			},
 			method: "GET"
 		}
-	});
-});
-
-function getStats(){
-	console.log(params);
-	var url = 'https://api.fortnitetracker.com/v1/profile/';
-			var platform = document.getElementById('platform');
-			var platformChoice = platform.options[platform.selectedIndex].value;
-	    	var epicName = document.getElementById('inputName').value;
-	    	url = url + platformChoice + '/' + epicName;
-
-			fetch(url,params)
+		console.log(param);
+			fetch(url,param)
 			  .then(data=>{
 			  	if(!data.ok) throw Error(data.statusText);
 			  	return data.json()
@@ -87,6 +81,14 @@ function getStats(){
 			  	console.log(error);
 			  	alert("Please enter username")
 			  });
+	});
+});
+	// var url = 'https://api.fortnitetracker.com/v1/profile/';
+	// 		var platform = document.getElementById('platform');
+	// 		var platformChoice = platform.options[platform.selectedIndex].value;
+	//     	var epicName = document.getElementById('inputName').value;
+	//     	url = url + platformChoice + '/' + epicName;
+
 }
 
 function getTier(rating, mode){
@@ -123,76 +125,22 @@ function getTier(rating, mode){
 }
 
 window.addEventListener('load', function load(event){
+	$(document).ready(function() {
+	$("#name").hide();
+	$("#allStats").hide();
+	});
 
-	//FIX PARAMS = UNDEFINED
 	chrome.storage.sync.get(['epicName'], function(result) {
-          console.log('Stored Username is ' + result.epicName);
-          if(result.epicName != 'undefined'){
-          	var url = 'https://api.fortnitetracker.com/v1/profile/';
+		if(result.epicName != 'undefined'){
+			var url = 'https://api.fortnitetracker.com/v1/profile/';
 			var platform = document.getElementById('platform');
 			var platformChoice = platform.options[platform.selectedIndex].value;
 	    	var epicName = result.epicName;
 	    	url = url + platformChoice + '/' + epicName;
 
-	    	console.log(params);
-
-			fetch(url,params)
-			  .then(data=>{
-			  	if(!data.ok) throw Error(data.statusText);
-			  	return data.json()
-			  })
-			  .then(res=>{
-			  	if(res.error){
-			  		alert("Player not found");
-			  		document.getElementById('inputName').value = '';
-			  		document.getElementById('inputName').focus();
-			  	} 
-			  	else{
-				  	console.log(res);
-				  	console.log("url: " + url);
-				  	document.getElementById('text').innerHTML = res.epicUserHandle;
-
-				  	// Solo stats
-				  	document.getElementById('winsSolo').innerHTML = res.stats.curr_p2.top1.displayValue;
-				  	document.getElementById('killsSolo').innerHTML = res.stats.curr_p2.kills.displayValue;
-				  	document.getElementById('winPerSolo').innerHTML = res.stats.curr_p2.winRatio.displayValue+"%";
-				  	document.getElementById('kdSolo').innerHTML = res.stats.curr_p2.kd.displayValue;
-				  	document.getElementById('soloRank').innerHTML = res.stats.curr_p2.trnRating.displayValue;
-
-				  	getTier(res.stats.curr_p2.trnRating.valueInt, 1);
-				  	
-				  	// Duo stats
-				  	document.getElementById('winsDuo').innerHTML = res.stats.curr_p10.top1.displayValue;
-				  	document.getElementById('killsDuo').innerHTML = res.stats.curr_p10.kills.displayValue;
-				  	document.getElementById('winPerDuo').innerHTML = res.stats.curr_p10.winRatio.displayValue+"%";
-				  	document.getElementById('kdDuo').innerHTML = res.stats.curr_p10.kd.displayValue;
-
-				  	document.getElementById('duoRank').innerHTML = res.stats.curr_p10.trnRating.displayValue;
-
-				  	getTier(res.stats.curr_p10.trnRating.valueInt, 2);
-
-				  	//Squad stats
-				  	document.getElementById('winsSquad').innerHTML = res.stats.curr_p9.top1.displayValue;
-				  	document.getElementById('killsSquad').innerHTML = res.stats.curr_p9.kills.displayValue;
-				  	document.getElementById('winPerSquad').innerHTML = res.stats.curr_p9.winRatio.displayValue+"%";
-				  	document.getElementById('kdSquad').innerHTML = res.stats.curr_p9.kd.displayValue;
-				  	document.getElementById('squadRank').innerHTML = res.stats.curr_p9.trnRating.displayValue;
-
-				  	getTier(res.stats.curr_p9.trnRating.valueInt, 3);
-
-				  	document.getElementById('inputName').value = '';
-			  		document.getElementById('inputName').focus();
-
-			  		jQuery("#allStats").show();
-			  		jQuery("#name").show();
-				  }
-			  }).
-			  catch(error=>{
-			  	console.log(error);
-			  	alert("Please enter username")
-			  });
-          }
-        });
+			getStats(url);
+		}
+	});
 	
 	
     document.getElementById('inputName').addEventListener("keyup", function(event){
@@ -200,9 +148,15 @@ window.addEventListener('load', function load(event){
     	event.preventDefault();
     	if(event.keyCode == 13){
 
-			getStats();
+    		var url = 'https://api.fortnitetracker.com/v1/profile/';
+			var platform = document.getElementById('platform');
+			var platformChoice = platform.options[platform.selectedIndex].value;
+	    	var epicName = document.getElementById('inputName').value;
+	    	url = url + platformChoice + '/' + epicName;
+
+			getStats(url);
     		
     	}
-    });
+    } );
 
 });
