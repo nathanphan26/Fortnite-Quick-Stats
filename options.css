@@ -1,0 +1,18 @@
+#optionForm{
+	padding: 75px;
+	margin: auto;
+	margin-top: 75px; 
+	border-radius: 15px;
+}
+
+#saved{
+	display: none;
+}
+
+.bottom{
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 5px;
+	font-size: 24px;
+	color: green;
+}

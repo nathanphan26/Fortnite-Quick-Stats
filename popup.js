@@ -48,7 +48,7 @@ function getStats(url){
 			},
 			method: "GET"
 		};
-
+		console.log(param);
 		fetch(url,param)
 		  .then(data=>{	//Data Check
 		  	if(!data.ok) throw Error(data.statusText);

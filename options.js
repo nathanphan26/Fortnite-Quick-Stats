@@ -1,26 +1,42 @@
 document.addEventListener('DOMContentLoaded', function() {
-    chrome.storage.sync.get(['epicName'], function(result) {
-       console.log('Value currently is ' + result.epicName);
-       var name = result.epicName;
-       console.log(name);
-	    if(name != 'undefined'){
-	    	document.getElementById('epicUsername').value = name;
-	    }
-    });
+  chrome.storage.sync.get(['epicName'], function(result) {
+    var name = result.epicName;
+    document.getElementById('formEpicUsername').value = name;
+  });
+
+  $('#formEpicUsername').focus();
 }, false);
 
-function saveUsername() {
-  var name = document.getElementById('epicUsername').value;
+function saveUser(){
+  var name = $('#formEpicUsername').val();
   chrome.storage.sync.set({epicName: name}, function(){
-  	console.log(name);
+    console.log("storage click " + name);
+    if(name === ''){
+      chrome.storage.sync.set({optionsSwitch: 'true'}, function() {
+        console.log("optionsSwitch true");
+      });
+    } else {
+      chrome.storage.sync.set({optionsSwitch: 'false'}, function() {
+        console.log("optionsSwitch false");
+      });
+    }
   });
+
+  $('#saved').show();
+  $('#saved').removeClass('fadeIn fadeOut');
+  $('#saved').addClass('fadeIn');
+  setTimeout(function(){
+    $('#saved').addClass('fadeOut');
+  }, 2000);
+  setTimeout(function(){
+    $('#saved').hide();
+  }, 3000);
 }
 
- var saveButton = document.getElementById('save');
- var submitInput = document.getElementById('epicUsername');
- saveButton.addEventListener('click', saveUsername);
- submitInput.addEventListener('keyup', e => {
-	if(e.keyCode == 13){
-		saveUsername();
-	}
+$('#save').click(saveUser);
+
+$("#formEpicUsername").keydown(function (e) {
+  if (e.keyCode == 13) {
+    saveUser();
+  }
 });

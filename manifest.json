@@ -1,6 +1,6 @@
   {
     "name": "Fortnite Quick Stats",
-    "version": "1.1",
+    "version": "1.2",
     "description": "Search up your Fortnite stats with a click of a button",
     "background": {
       "scripts": ["background.js"],
@@ -26,5 +26,15 @@
       "128": "images/icon128.png"
     },
     "manifest_version": 2,
-    "options_page": "options.html"
+    "content_scripts": [{
+     "js": ["includes/jquery.min.js", "background.js"],
+     "matches": ["http://*/*", "https://*/*"]
+   }],
+
+    "options_page": "options.html",
+    // "options_ui": {
+    //   "page": "options.html",
+    //   "open_in_tab": false
+    // },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
   }
