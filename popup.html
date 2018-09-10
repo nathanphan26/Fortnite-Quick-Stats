@@ -1,155 +1,145 @@
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
     <head>
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-      <link href="popup.css" rel="stylesheet">
-      <script src="includes/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="popup.css" rel="stylesheet">
+        <script src="includes/jquery.min.js"></script>
     </head>
+
     <body>
-
-      <div id="search">
-        <input type="text" id="inputName" autofocus="autofocus" placeholder="Search Epic Username...">
-        <select name="platform" id="platform">
-          <option value="pc">PC</option>
-          <option value="xbl">Xbox</option>
-          <option value="ps4">PS4</option>
-        </select>
-      </div>
-
-      <div class="wrapper">
-
-      <!-- Display name -->
-      <!-- <p> -->
-        <div id="name">
-          <div class="circletag">
-            <img src="images/avatar1.png" alt="">
-          </div>
-          <span id="text">daddy natty</span>
+        <!-- Popup Header -->
+        <div id="brand">
+            <p id="brandTitle">Fortnite Quick Stats</p>
+            <b><p id="ver">v?.?.?</p></b>
         </div>
-      <!-- </p> -->
 
-      <!-- BEGIN COLUMN CONTAINER -->
-      <div class="col-container" id="allStats">
-
-        <!-- SOLOS -->
-        <!-- BEGIN COLUMN -->
-        <div class="col">
-
-          <!-- TITLE -->
-          <div id="titleHolder">
-            <p id="soloTitle">SOLOS</p>
-          </div>
-
-          <!-- RANKING -->
-          <div class="rating" id="ratingSolo">           
-            <img src="" alt="" class="tier" id="soloImg">
-            <span></span>
-            <span class="rank" id="soloRank">RANK</span>
-          </div>
-
-          <!-- LEFT COLUMN STATS -->
-          <div class="colInnerLeft">
-
-            <div class="box">
-              <span class="stats">Wins:</span> <span class="stats right" id="winsSolo"></span>
-            </div>
-            <div class="box">
-             <span class="stats">Win %:</span> <span class="stats right" id="winPerSolo"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Kills:</span> <span class="stats right" id="killsSolo"></span>
-            </div>
-            <div class="box">
-              <span class="stats">K/D:</span> <span class="stats right" id="kdSolo"></span>
-            </div>
-
-          </div>
-
+        <!-- Popup Search Bar -->
+        <div id="search">
+            <input type="text" id="searchName" autofocus="autofocus" placeholder="Search Epic Username...">
+            <select name="platform" id="platform">
+                <option value="pc">PC</option>
+                <option value="xbl">Xbox</option>
+                <option value="ps4">PS4</option>
+            </select>
         </div>
-        <!-- END COLUMN -->
-        <!-- END SOLOS -->
 
-        <!-- DUOS -->
-        <!-- BEGIN COLUMN -->
-        <div class="col">
-
-          <!-- TITLE -->
-          <div id="titleHolder">
-            <p id="duoTitle">DUOS</p>
-          </div>
-
-          <!-- RANKING -->
-          <div class="rating" id="ratingDuo">
-            <img src="images/tier4.png" alt="tier4" class="tier" id="duoImg">
-            <span></span>
-            <div class="rank" id="duoRank">RANK</div>
-          </div>
-
-          <!-- LEFT COLUMN STATS -->
-          <div class="colInnerLeft">
-
-            <div class="box">
-              <span class="stats">Wins:</span> <span class="stats right" id="winsDuo"></span>
+        <!-- Display name -->
+        <div id="nameContainer">
+            <div class="circletag">
+                <img src="images/avatar1.png" alt="">
             </div>
-            <div class="box">
-              <span class="stats">Win %:</span> <span class="stats right" id="winPerDuo"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Kills:</span> <span class="stats right" id="killsDuo"></span>
-            </div>
-            <div class="box">
-              <span class="stats">K/D:</span> <span class="stats right" id="kdDuo"></span>
-            </div>
-
-          </div>
-  
+            <span id="name">daddy natty</span>
         </div>
-        <!-- END COLUMN  -->
-        <!-- END DUOS -->
 
-        <!-- SQUADS -->
-        <!-- BEGIN COLUMN -->
-        <div class="col">
-          
-          <!-- TITLE -->
-          <div id="titleHolder">
-            <p id="squalTitle">SQUADS</p>
-          </div>
+        <!-- BEGIN STATS CARDS CONTAINER -->
+        <div class="statsCards" id="allStats">
 
-          <!-- RANKING -->
-          <div class="rating" id="ratingSquad">
-            <img src="images/tier4.png" alt="tier4" class="tier" id="squadImg">
-            <span></span>
-            <div class="rank" id="squadRank">RANK</div>
-          </div>
+            <!-- BEGIN SOLO STATS CARD -->
+            <div class="statsCard">
 
-          <!-- LEFT COLUMN STATS -->
-          <div class="colInnerLeft">
+                <!-- TITLE -->
+                <div class="title">
+                    <p id="soloTitle">SOLOS</p>
+                </div>
 
-            <div class="box">
-              <span class="stats">Wins:</span> <span class="stats right" id="winsSquad"></span>
+                <!-- TRN RANKING -->
+                <div class="rankContainer" id="ratingSolo">           
+                    <img src="" alt="" class="tier" id="soloImg">
+                    <span></span>
+                    <span class="rank" id="soloRank">RANK</span>
+                </div>
+
+                <!-- STATS BREAK DOWN -->
+                <div class="stats">                             
+                    <div class="box"> <!-- WINS -->
+                        <span class="stat">Wins:</span> <span class="stat right" id="winsSolo"></span>
+                    </div>
+                    <div class="box"> <!-- WIN % -->
+                        <span class="stat">Win %:</span> <span class="stat right" id="winPerSolo"></span>
+                    </div>
+                    <div class="box"> <!-- KILLS -->
+                        <span class="stat">Kills:</span> <span class="stat right" id="killsSolo"></span>
+                    </div>
+                    <div class="box"> <!-- KD -->
+                        <span class="stat">K/D:</span> <span class="stat right" id="kdSolo"></span>
+                    </div>
+                </div>
+
+            </div> 
+            <!-- END SOLOS STATS COLUMN -->
+
+            <!-- BEGIN DUOS STATS COLUMN -->
+            <div class="statsCard">
+
+                <!-- TITLE -->
+                <div class="title">
+                    <p id="duoTitle">DUOS</p>
+                </div>
+
+                <!-- TRN RANKING -->
+                <div class="rankContainer" id="ratingDuo">
+                    <img src="images/tier4.png" alt="tier4" class="tier" id="duoImg">
+                    <span></span>
+                    <div class="rank" id="duoRank">RANK</div>
+                </div>
+
+                <!-- STATS BREAK DOWN -->
+                <div class="stats">
+                    <div class="box"> <!-- WINS -->
+                        <span class="stat">Wins:</span> <span class="stat right" id="winsDuo"></span>
+                    </div>
+                    <div class="box"> <!-- WIN % -->
+                        <span class="stat">Win %:</span> <span class="stat right" id="winPerDuo"></span>
+                    </div>
+                    <div class="box"> <!-- KILLS -->
+                        <span class="stat">Kills:</span> <span class="stat right" id="killsDuo"></span>
+                    </div>
+                    <div class="box"> <!-- KD -->
+                        <span class="stat">K/D:</span> <span class="stat right" id="kdDuo"></span>
+                    </div>
+                </div>
+
             </div>
-            <div class="box">
-              <span class="stats">Win %:</span> <span class="stats right" id="winPerSquad"></span>
-            </div>
-            <div class="box">
-              <span class="stats">Kills:</span> <span class="stats right" id="killsSquad"></span>
-            </div>
-            <div class="box">
-              <span class="stats">K/D:</span> <span class="stats right" id="kdSquad"></span>
-            </div>
+            <!-- END DUOS STATS COLUMN  -->
 
-          </div>
-          
-        </div>
-        <!-- END COLUMN -->
-        <!-- END SQUADS -->
-      </div>
-      <!-- END COLUMN CONTAINER -->
-    </div>
+            <!-- BEGIN SQUADS STATS COLUMN -->
+            <div class="statsCard">
         
+                <!-- TITLE -->
+                <div class="title">
+                    <p id="squalTitle">SQUADS</p>
+                </div>
 
-      <!-- SCRIPTS -->
-      <script src="popup.js"></script>
+                <!-- TRN RANKING -->
+                <div class="rankContainer" id="ratingSquad">
+                    <img src="images/tier4.png" alt="tier4" class="tier" id="squadImg">
+                    <span></span>
+                    <div class="rank" id="squadRank">RANK</div>
+                </div>
+
+                <!-- STATS BREAK DOWN -->
+                <div class="stats">
+                    <div class="box"> <!-- WINS -->
+                        <span class="stat">Wins:</span> <span class="stat right" id="winsSquad"></span>
+                    </div>
+                    <div class="box"> <!-- WIN % -->
+                        <span class="stat">Win %:</span> <span class="stat right" id="winPerSquad"></span>
+                    </div>
+                    <div class="box"> <!-- KILLS -->
+                        <span class="stat">Kills:</span> <span class="stat right" id="killsSquad"></span>
+                    </div>
+                    <div class="box"> <!-- KD -->
+                        <span class="stat">K/D:</span> <span class="stat right" id="kdSquad"></span>
+                    </div>
+                </div>
+        
+            </div>
+            <!-- END SQUADS STATS COLUMN -->
+
+        </div>
+        <!-- END STATS CONTAINER -->
+ 
+        <!-- SCRIPTS -->
+        <script src="popup.js"></script>
     </body>
-  </html>
+</html>

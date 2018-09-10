@@ -1,3 +1,16 @@
+
+
+
+
+$(function() {
+	$('#ver').text(function(){
+		var manifest = chrome.runtime.getManifest();
+		console.log(manifest);
+		return "v" + manifest.version;
+	});
+});
+
+
 function getTier(rating, mode){
 	var img;
 
@@ -48,7 +61,7 @@ function getStats(url){
 			},
 			method: "GET"
 		};
-		console.log(param);
+		// console.log(param);
 		fetch(url,param)
 		  .then(data=>{	//Data Check
 		  	if(!data.ok) throw Error(data.statusText);

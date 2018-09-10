@@ -1,27 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
-  chrome.storage.sync.get(['epicName'], function(result) {
-    var name = result.epicName;
-    document.getElementById('formEpicUsername').value = name;
-  });
-
-  $('#formEpicUsername').focus();
-}, false);
-
+// Takes value from input and stores it via chrome storage
 function saveUser(){
   var name = $('#formEpicUsername').val();
   chrome.storage.sync.set({epicName: name}, function(){
-    console.log("storage click " + name);
-    if(name === ''){
-      chrome.storage.sync.set({optionsSwitch: 'true'}, function() {
-        console.log("optionsSwitch true");
-      });
-    } else {
-      chrome.storage.sync.set({optionsSwitch: 'false'}, function() {
-        console.log("optionsSwitch false");
-      });
-    }
+    var empty = (name === '');
+    chrome.storage.sync.set({optionsSwitch: empty}, function() {
+      console.log("optionsSwitch " + empty); // Boolean value if name is empty
+    });
   });
 
+  // Animate.css
   $('#saved').show();
   $('#saved').removeClass('fadeIn fadeOut');
   $('#saved').addClass('fadeIn');
@@ -33,10 +20,21 @@ function saveUser(){
   }, 3000);
 }
 
-$('#save').click(saveUser);
+// Onload functions
+$(function() {
+  chrome.storage.sync.get(['epicName'], function(result) {
+    var name = result.epicName;
+    document.getElementById('formEpicUsername').value = name;
+  });
 
-$("#formEpicUsername").keydown(function (e) {
-  if (e.keyCode == 13) {
-    saveUser();
-  }
+  $('#formEpicUsername').focus();
+
+  $('#save').click(saveUser);
+
+  $("#formEpicUsername").keydown(function (e) {
+    if (e.keyCode == 13) {
+      saveUser();
+    }
+  });
+
 });
