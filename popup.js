@@ -40,7 +40,7 @@ function getTier(rating, mode){
 		img.src = 'images/tier5.png';
 	}
 	// else if(rating >= 1500 && rating < 3000){
-		
+
 	// }
 }
 
@@ -53,7 +53,7 @@ function getStats(url){
 	$("#allStats").hide();
 	/* ------------------------------ */
 
-	$.get("includes/help.stats", function(data) { 
+	$.get("includes/help.stats", function(data) {
 
 		param = {
 			headers:{
@@ -70,12 +70,12 @@ function getStats(url){
 		  .then(res=>{
 		  	if(res.error){	//Player name not found
 		  		alert("Player not found");
-		  		document.getElementById('inputName').value = '';
-		  		document.getElementById('inputName').focus();
-		  	} 
+		  		document.getElementById('searchName').value = '';
+		  		document.getElementById('searchName').focus();
+		  	}
 		  	else{
 
-			  	document.getElementById('text').innerHTML = res.epicUserHandle; // Display name
+			  	document.getElementById('name').innerHTML = res.epicUserHandle; // Display name
 
 			  	// Solo stats
 			  	document.getElementById('winsSolo').innerHTML = res.stats.curr_p2.top1.displayValue;
@@ -85,7 +85,7 @@ function getStats(url){
 			  	document.getElementById('soloRank').innerHTML = res.stats.curr_p2.trnRating.displayValue;
 
 			  	getTier(res.stats.curr_p2.trnRating.valueInt, 1); //Icons
-			  	
+
 			  	// Duo stats
 			  	document.getElementById('winsDuo').innerHTML = res.stats.curr_p10.top1.displayValue;
 			  	document.getElementById('killsDuo').innerHTML = res.stats.curr_p10.kills.displayValue;
@@ -106,8 +106,8 @@ function getStats(url){
 			  	getTier(res.stats.curr_p9.trnRating.valueInt, 3); //Icons
 
 			  	// Input focus
-			  	document.getElementById('inputName').value = '';
-		  		document.getElementById('inputName').focus();
+			  	document.getElementById('searchName').value = '';
+		  		document.getElementById('searchName').focus();
 
 		  		jQuery("#allStats").show();
 		  		jQuery("#name").show();
@@ -117,8 +117,8 @@ function getStats(url){
 		  	console.log(error);
 		  	alert("Please enter username")
 		  	// Input focus
-		  	document.getElementById('inputName').value = '';
-	  		document.getElementById('inputName').focus();
+		  	document.getElementById('searchName').value = '';
+	  		document.getElementById('searchName').focus();
 		  });
 	});
 }
@@ -143,22 +143,26 @@ window.addEventListener('load', function load(event){
 			getStats(url);
 		}
 	});
-	
-	
+
+
 	//If searched
-    document.getElementById('inputName').addEventListener("keyup", function(event){
+		var el = document.getElementById('searchName');
+		if(el){
+			el.addEventListener("keyup", function(event){
 
-    	event.preventDefault();
-    	if(event.keyCode == 13){
+	    	event.preventDefault();
+	    	if(event.keyCode == 13){
 
-    		var url = 'https://api.fortnitetracker.com/v1/profile/';
-			var platform = document.getElementById('platform');
-			var platformChoice = platform.options[platform.selectedIndex].value;
-	    	var epicName = document.getElementById('inputName').value;
-	    	url = url + platformChoice + '/' + epicName;
+	    		var url = 'https://api.fortnitetracker.com/v1/profile/';
+				var platform = document.getElementById('platform');
+				var platformChoice = platform.options[platform.selectedIndex].value;
+		    	var epicName = document.getElementById('searchName').value;
+		    	url = url + platformChoice + '/' + epicName;
 
-			getStats(url);
-    		
-    	}
-    });
+				getStats(url);
+
+	    	}
+	    });
+		}
+
 });
