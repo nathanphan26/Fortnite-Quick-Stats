@@ -59,7 +59,7 @@ function getStats(url){
 	var param;
 
 	/* To be used for special effects */
-	$("#name").hide();
+	$("#nameContainer").hide();
 	$("#allStats").hide();
 	/* ------------------------------ */
 
@@ -79,7 +79,9 @@ function getStats(url){
 		  })
 		  .then(res=>{
 		  	if(res.error){	//Player name not found
-		  		alert("Player not found");
+					$('#error').show();
+					$('#errorHtml').html('player not found');
+		  		// alert("Player not found");
 		  		document.getElementById('searchName').value = '';
 		  		document.getElementById('searchName').focus();
 		  	}
@@ -121,7 +123,7 @@ function getStats(url){
 			  		document.getElementById('searchName').focus();
 
 			  		jQuery("#allStats").show();
-			  		jQuery("#name").show();
+			  		jQuery("#nameContainer").show();
 					}
 
 					else {
@@ -158,7 +160,7 @@ function getStats(url){
 		  		document.getElementById('searchName').focus();
 
 		  		jQuery("#allStats").show();
-		  		jQuery("#name").show();
+		  		jQuery("#nameContainer").show();
 				}
 			  }
 		  }).
@@ -174,43 +176,41 @@ function getStats(url){
 
 
 window.addEventListener('load', function load(event){
+
+	// Hide all stats when loaded
 	$(document).ready(function() {
-		$("#name").hide();
+		$("#error").hide();
+		$("#nameContainer").hide();
 		$("#allStats").hide();
 	});
 
-	// If username is stored
-	chrome.storage.sync.get(['epicName'], function(result) {
-		if(result.epicName != 'undefined'){
-			var url = 'https://api.fortnitetracker.com/v1/profile/';
-			var platform = document.getElementById('platform');
-			var platformChoice = platform.options[platform.selectedIndex].value;
-	    var epicName = result.epicName;
-	    url = url + platformChoice + '/' + epicName;
+	// If username was stored
+	chrome.storage.sync.get(['epicName'], function(result) { // Retrieves username from chrome storage
+		if(result.epicName != 'undefined'){ // If username isn't undefined search username
 
-			getStats(url);
+			chrome.storage.sync.get(['epicPlatform'], function(result2) { // Retrieves platform from chrome storage
+				$('#platform').val(result2.epicPlatform);
+
+				var url = 'https://api.fortnitetracker.com/v1/profile/'; // Set url
+				var platformChoice = result2.epicPlatform; // Set platform
+		    var epicName = result.epicName; // Set username
+		    url = url + platformChoice + '/' + epicName; // Concatonate url
+				getStats(url);
+			});
+
 		}
 	});
 
-
-	//If searched
-		var el = document.getElementById('searchName');
-		if(el){
-			el.addEventListener("keyup", function(event){
-
-	    	event.preventDefault();
-	    	if(event.keyCode == 13){
-
-	    		var url = 'https://api.fortnitetracker.com/v1/profile/';
-				var platform = document.getElementById('platform');
-				var platformChoice = platform.options[platform.selectedIndex].value;
-		    	var epicName = document.getElementById('searchName').value;
-		    	url = url + platformChoice + '/' + epicName;
-
-				getStats(url);
-
-	    	}
-	    });
+	// If username is searched
+	$('#searchName').keydown(function (e) {
+		if(e.keyCode == 13) {
+			var url = 'https://api.fortnitetracker.com/v1/profile/';
+			var platform = document.getElementById('platform');
+			var platformChoice = platform.options[platform.selectedIndex].value;
+			var epicName = $('#searchName').val();
+			url = url + platformChoice + '/' + epicName;
+			getStats(url);
 		}
+	})
 
 });
