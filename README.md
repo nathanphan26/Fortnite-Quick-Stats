@@ -1,6 +1,8 @@
-# Fortnite Quick Stats 
+# Fortnite Quick Stats
 
 Quick way to view your Fortnite stats.
+
+![alt text](https://github.com/nathphan/Fortnite-Quick-Stats/blob/feature/alerts/images/preview.png "Preview of extension")
 
 ## Change log
 
@@ -24,3 +26,6 @@ Quick way to view your Fortnite stats.
 
 ###### v1.0.0
 - Initial release
+
+
+https://github.com/nathphan/Fortnite-Quick-Stats/blob/feature/alerts/images/preview.png
