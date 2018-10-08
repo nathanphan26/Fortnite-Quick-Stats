@@ -1,5 +1,7 @@
 // Takes value from input and stores it via chrome storage
 function saveUser(){
+
+  // Saves Epic Username to chrome storage
   var name = $('#formEpicUsername').val();
   chrome.storage.sync.set({epicName: name}, function(){
     var empty = (name === '');
@@ -8,7 +10,13 @@ function saveUser(){
     });
   });
 
-  // Animate.css
+  // Saves platform to chrome storage
+  var platform = $('#formPlatform').val();
+  chrome.storage.sync.set({epicPlatform: platform}, function() {
+    console.log(`platform: ${platform}`);
+  });
+
+  /***** Animate.css *****/
   $('#saved').show();
   $('#saved').removeClass('fadeIn fadeOut');
   $('#saved').addClass('fadeIn');
@@ -18,23 +26,29 @@ function saveUser(){
   setTimeout(function(){
     $('#saved').hide();
   }, 3000);
+  /***** Animate.css *****/
+
 }
 
 // Onload functions
 $(function() {
-  chrome.storage.sync.get(['epicName'], function(result) {
+  chrome.storage.sync.get(['epicName'], function(result) { // Retrieves username from chrome storage
     var name = result.epicName;
-    document.getElementById('formEpicUsername').value = name;
+    $('#formEpicUsername').val(name); // Sets input to name
   });
 
-  $('#formEpicUsername').focus();
+  chrome.storage.sync.get(['epicPlatform'], function(result) { // Retrieves username from chrome storage
+    var platform = result.epicPlatform;
+    $('#formPlatform').val(platform); // Sets input to name
+  });
 
-  $('#save').click(saveUser);
+  $('#formEpicUsername').focus(); // Sets focus to input field
 
-  $("#formEpicUsername").keydown(function (e) {
+  $('#save').click(saveUser); // Event listener for button click
+
+  $("#formEpicUsername").keydown(function (e) { // Event listener for enter key
     if (e.keyCode == 13) {
       saveUser();
     }
   });
-
 });
