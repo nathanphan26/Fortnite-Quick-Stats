@@ -2,7 +2,7 @@
 
 Quick way to view your Fortnite stats.
 
-![preview](https://github.com/nathphan/Fortnite-Quick-Stats/blob/feature/alerts/images/preview.png){:height="413px" width="318px"}
+![](https://github.com/nathphan/Fortnite-Quick-Stats/blob/feature/alerts/images/preview.png =413x318)
 
 ## Change log
 
