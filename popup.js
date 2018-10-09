@@ -59,8 +59,10 @@ function getStats(url){
 	var param;
 
 	/* To be used for special effects */
+	$("#error").hide();
 	$("#nameContainer").hide();
 	$("#allStats").hide();
+
 	/* ------------------------------ */
 
 	$.get("includes/help.stats", function(data) {

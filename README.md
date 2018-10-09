@@ -6,25 +6,27 @@ Quick way to view your Fortnite stats.
 
 ## Change log
 
-###### v1.3.1
-- UI touchup
-- Saves platform from options page
+##### v1.4.0
+- Options page updated to save gaming platform to storage
+- Popup updated to grab platform from storage
+- Removed alerts from popup
+- Added text block to display message
 - Bug fixes
-  - Error if current season not played
+  -  Stats didn't show if a player hasn’t played in the current season
 
-###### v1.3.0
+##### v1.3.0
 - Code clean up
 
-###### v1.2.0
+##### v1.2.0
 - Added options options page
 
-###### v1.2.0
+##### v1.2.0
 - Added options options page
 
-###### v1.1.0
+##### v1.1.0
 - Added styling
 
-###### v1.0.0
+##### v1.0.0
 - Initial release
 
 
