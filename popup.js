@@ -16,15 +16,15 @@ var winPerSquad = document.querySelector('#winPerSquad');
 var kdSquad = document.querySelector('#kdSquad');
 var squadRank = document.querySelector('#squadRank');
 
-$(function() {
-	$('#ver').text(function(){
-		var manifest = chrome.runtime.getManifest();
-		console.log(manifest);
-		return "v" + manifest.version;
-	});
-});
+var searchBar = document.querySelector('#searchName');
 
+// Clears and sets focus on search bar
+function setFocus() {
+	searchBar.value = '';
+	searchBar.focus();
+}
 
+// Gets images for different tiers
 function getTier(rating, mode){
 	var img;
 	if(mode == 1){
@@ -54,42 +54,38 @@ function getTier(rating, mode){
 	}
 }
 
-function getStats(url){
-
+// API call
+function getStats(url, options = false){
 	var param;
 
 	/* To be used for special effects */
 	$("#error").hide();
 	$("#nameContainer").hide();
 	$("#allStats").hide();
-
 	/* ------------------------------ */
 
 	$.get("includes/help.stats", function(data) {
-
 		param = {
 			headers:{
 				"trn-api-key": data
 			},
 			method: "GET"
 		};
-		// console.log(param);
+
 		fetch(url,param)
-		  .then(data=>{	//Data Check
+		  .then(data=>{	// Data Check
 		  	if(!data.ok) throw Error(data.statusText);
 		  	return data.json()
 		  })
 		  .then(res=>{
-		  	if(res.error){	//Player name not found
+		  	if(res.error){	// Username not found
 					$('#error').show();
-					$('#errorHtml').html('player not found');
-		  		// alert("Player not found");
-		  		document.getElementById('searchName').value = '';
-		  		document.getElementById('searchName').focus();
+					if(options) $('#errorHtml').html('Error: Saved username is invalid'); // Error via options
+					else $('#errorHtml').html('player not found'); // Error via popup
+		  		setFocus();
 		  	}
 		  	else{
-
-			  	document.getElementById('name').innerHTML = res.epicUserHandle; // Display name
+			  	document.getElementById('name').innerHTML = res.epicUserHandle; // Display name // Wtf why cant I change this
 
 					if(res.stats.curr_p2 == null) {
 						// Solo stats
@@ -98,7 +94,6 @@ function getStats(url){
 				  	winPerSolo.innerHTML = res.stats.p2.winRatio.displayValue+"%";
 				  	kdSolo.innerHTML = res.stats.p2.kd.displayValue;
 				  	soloRank.innerHTML = res.stats.p2.trnRating.displayValue;
-
 				  	getTier(res.stats.p2.trnRating.valueInt, 1); //Icons
 
 				  	// Duo stats
@@ -106,9 +101,7 @@ function getStats(url){
 				  	killsDuo.innerHTML = res.stats.p10.kills.displayValue;
 				  	winPerDuo.innerHTML = res.stats.p10.winRatio.displayValue+"%";
 				  	kdDuo.innerHTML = res.stats.p10.kd.displayValue;
-
 				  	duoRank.innerHTML = res.stats.p10.trnRating.displayValue;
-
 				  	getTier(res.stats.p10.trnRating.valueInt, 2); //Icons
 
 				  	//Squad stats
@@ -117,67 +110,55 @@ function getStats(url){
 				  	winPerSquad.innerHTML = res.stats.p9.winRatio.displayValue+"%";
 				  	kdSquad.innerHTML = res.stats.p9.kd.displayValue;
 				  	squadRank.innerHTML = res.stats.p9.trnRating.displayValue;
-
 				  	getTier(res.stats.p9.trnRating.valueInt, 3); //Icons
-
-				  	// Input focus
-				  	document.getElementById('searchName').value = '';
-			  		document.getElementById('searchName').focus();
-
-			  		jQuery("#allStats").show();
-			  		jQuery("#nameContainer").show();
 					}
-
 					else {
-			  	// Solo stats
-			  	winsSolo.innerHTML = res.stats.curr_p2.top1.displayValue;
-			  	killsSolo.innerHTML = res.stats.curr_p2.kills.displayValue;
-			  	winPerSolo.innerHTML = res.stats.curr_p2.winRatio.displayValue+"%";
-			  	kdSolo.innerHTML = res.stats.curr_p2.kd.displayValue;
-			  	soloRank.innerHTML = res.stats.curr_p2.trnRating.displayValue;
+				  	// Solo stats
+				  	winsSolo.innerHTML = res.stats.curr_p2.top1.displayValue;
+				  	killsSolo.innerHTML = res.stats.curr_p2.kills.displayValue;
+				  	winPerSolo.innerHTML = res.stats.curr_p2.winRatio.displayValue+"%";
+				  	kdSolo.innerHTML = res.stats.curr_p2.kd.displayValue;
+				  	soloRank.innerHTML = res.stats.curr_p2.trnRating.displayValue;
+				  	getTier(res.stats.curr_p2.trnRating.valueInt, 1); //Icons
 
-			  	getTier(res.stats.curr_p2.trnRating.valueInt, 1); //Icons
+				  	// Duo stats
+				  	winsDuo.innerHTML = res.stats.curr_p10.top1.displayValue;
+				  	killsDuo.innerHTML = res.stats.curr_p10.kills.displayValue;
+				  	winPerDuo.innerHTML = res.stats.curr_p10.winRatio.displayValue+"%";
+				  	kdDuo.innerHTML = res.stats.curr_p10.kd.displayValue;
+				  	duoRank.innerHTML = res.stats.curr_p10.trnRating.displayValue;
+				  	getTier(res.stats.curr_p10.trnRating.valueInt, 2); //Icons
 
-			  	// Duo stats
-			  	winsDuo.innerHTML = res.stats.curr_p10.top1.displayValue;
-			  	killsDuo.innerHTML = res.stats.curr_p10.kills.displayValue;
-			  	winPerDuo.innerHTML = res.stats.curr_p10.winRatio.displayValue+"%";
-			  	kdDuo.innerHTML = res.stats.curr_p10.kd.displayValue;
+				  	//Squad stats
+				  	winsSquad.innerHTML = res.stats.curr_p9.top1.displayValue;
+				  	killsSquad.innerHTML = res.stats.curr_p9.kills.displayValue;
+				  	winPerSquad.innerHTML = res.stats.curr_p9.winRatio.displayValue+"%";
+				  	kdSquad.innerHTML = res.stats.curr_p9.kd.displayValue;
+				  	squadRank.innerHTML = res.stats.curr_p9.trnRating.displayValue;
+				  	getTier(res.stats.curr_p9.trnRating.valueInt, 3); //Icons
+					}
+					setFocus();
 
-			  	duoRank.innerHTML = res.stats.curr_p10.trnRating.displayValue;
-
-			  	getTier(res.stats.curr_p10.trnRating.valueInt, 2); //Icons
-
-			  	//Squad stats
-			  	winsSquad.innerHTML = res.stats.curr_p9.top1.displayValue;
-			  	killsSquad.innerHTML = res.stats.curr_p9.kills.displayValue;
-			  	winPerSquad.innerHTML = res.stats.curr_p9.winRatio.displayValue+"%";
-			  	kdSquad.innerHTML = res.stats.curr_p9.kd.displayValue;
-			  	squadRank.innerHTML = res.stats.curr_p9.trnRating.displayValue;
-
-			  	getTier(res.stats.curr_p9.trnRating.valueInt, 3); //Icons
-
-			  	// Input focus
-			  	document.getElementById('searchName').value = '';
-		  		document.getElementById('searchName').focus();
-
-		  		jQuery("#allStats").show();
-		  		jQuery("#nameContainer").show();
-				}
+					$("#allStats").show();
+					$("#nameContainer").show();
 			  }
 		  }).
 		  catch(error=>{
 		  	console.log(error);
-		  	alert("Please enter username")
-		  	// Input focus
-		  	document.getElementById('searchName').value = '';
-	  		document.getElementById('searchName').focus();
+		  	alert("Please enter username");
+		  	setFocus();
 		  });
 	});
 }
 
+$(function() {
 
-window.addEventListener('load', function load(event){
+  // Updates version number
+	$('#ver').text(function(){
+		var manifest = chrome.runtime.getManifest();
+		console.log(manifest);
+		return "v" + manifest.version;
+	});
 
 	// Hide all stats when loaded
 	$(document).ready(function() {
@@ -197,7 +178,7 @@ window.addEventListener('load', function load(event){
 				var platformChoice = result2.epicPlatform; // Set platform
 		    var epicName = result.epicName; // Set username
 		    url = url + platformChoice + '/' + epicName; // Concatonate url
-				getStats(url);
+				getStats(url, true);
 			});
 
 		}
@@ -214,5 +195,4 @@ window.addEventListener('load', function load(event){
 			getStats(url);
 		}
 	})
-
 });
