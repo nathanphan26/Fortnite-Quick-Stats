@@ -86,57 +86,33 @@ function getStats(url, options = false){
 		  	}
 		  	else{
 			  	document.getElementById('name').innerHTML = res.epicUserHandle; // Display name // Wtf why cant I change this
+					let prefix = '';
+					if(res.stats.curr_p2 != null) prefix = 'curr_';
+					// Solo stats
+			  	winsSolo.innerHTML = res.stats[`${prefix}p2`].top1.displayValue;
+			  	killsSolo.innerHTML = res.stats[`${prefix}p2`].kills.displayValue;
+			  	winPerSolo.innerHTML = res.stats[`${prefix}p2`].winRatio.displayValue+"%";
+			  	kdSolo.innerHTML = res.stats[`${prefix}p2`].kd.displayValue;
+			  	soloRank.innerHTML = res.stats[`${prefix}p2`].trnRating.displayValue;
 
-					if(res.stats.curr_p2 == null) {
-						// Solo stats
-				  	winsSolo.innerHTML = res.stats.p2.top1.displayValue;
-				  	killsSolo.innerHTML = res.stats.p2.kills.displayValue;
-				  	winPerSolo.innerHTML = res.stats.p2.winRatio.displayValue+"%";
-				  	kdSolo.innerHTML = res.stats.p2.kd.displayValue;
-				  	soloRank.innerHTML = res.stats.p2.trnRating.displayValue;
-				  	getTier(res.stats.p2.trnRating.valueInt, 1); //Icons
+			  	// Duo stats
+			  	winsDuo.innerHTML = res.stats[`${prefix}p10`].top1.displayValue;
+			  	killsDuo.innerHTML = res.stats[`${prefix}p10`].kills.displayValue;
+			  	winPerDuo.innerHTML = res.stats[`${prefix}p10`].winRatio.displayValue+"%";
+			  	kdDuo.innerHTML = res.stats[`${prefix}p10`].kd.displayValue;
+			  	duoRank.innerHTML = res.stats[`${prefix}p10`].trnRating.displayValue;
 
-				  	// Duo stats
-				  	winsDuo.innerHTML = res.stats.p10.top1.displayValue;
-				  	killsDuo.innerHTML = res.stats.p10.kills.displayValue;
-				  	winPerDuo.innerHTML = res.stats.p10.winRatio.displayValue+"%";
-				  	kdDuo.innerHTML = res.stats.p10.kd.displayValue;
-				  	duoRank.innerHTML = res.stats.p10.trnRating.displayValue;
-				  	getTier(res.stats.p10.trnRating.valueInt, 2); //Icons
+			  	//Squad stats
+			  	winsSquad.innerHTML = res.stats[`${prefix}p9`].top1.displayValue;
+			  	killsSquad.innerHTML = res.stats[`${prefix}p9`].kills.displayValue;
+			  	winPerSquad.innerHTML = res.stats[`${prefix}p9`].winRatio.displayValue+"%";
+			  	kdSquad.innerHTML = res.stats[`${prefix}p9`].kd.displayValue;
+			  	squadRank.innerHTML = res.stats[`${prefix}p9`].trnRating.displayValue;
 
-				  	//Squad stats
-				  	winsSquad.innerHTML = res.stats.p9.top1.displayValue;
-				  	killsSquad.innerHTML = res.stats.p9.kills.displayValue;
-				  	winPerSquad.innerHTML = res.stats.p9.winRatio.displayValue+"%";
-				  	kdSquad.innerHTML = res.stats.p9.kd.displayValue;
-				  	squadRank.innerHTML = res.stats.p9.trnRating.displayValue;
-				  	getTier(res.stats.p9.trnRating.valueInt, 3); //Icons
-					}
-					else {
-				  	// Solo stats
-				  	winsSolo.innerHTML = res.stats.curr_p2.top1.displayValue;
-				  	killsSolo.innerHTML = res.stats.curr_p2.kills.displayValue;
-				  	winPerSolo.innerHTML = res.stats.curr_p2.winRatio.displayValue+"%";
-				  	kdSolo.innerHTML = res.stats.curr_p2.kd.displayValue;
-				  	soloRank.innerHTML = res.stats.curr_p2.trnRating.displayValue;
-				  	getTier(res.stats.curr_p2.trnRating.valueInt, 1); //Icons
+					getTier(res.stats[`${prefix}p2`].trnRating.valueInt, 1); //Icons
+					getTier(res.stats[`${prefix}p10`].trnRating.valueInt, 2); //Icons
+			  	getTier(res.stats[`${prefix}p9`].trnRating.valueInt, 3); //Icons
 
-				  	// Duo stats
-				  	winsDuo.innerHTML = res.stats.curr_p10.top1.displayValue;
-				  	killsDuo.innerHTML = res.stats.curr_p10.kills.displayValue;
-				  	winPerDuo.innerHTML = res.stats.curr_p10.winRatio.displayValue+"%";
-				  	kdDuo.innerHTML = res.stats.curr_p10.kd.displayValue;
-				  	duoRank.innerHTML = res.stats.curr_p10.trnRating.displayValue;
-				  	getTier(res.stats.curr_p10.trnRating.valueInt, 2); //Icons
-
-				  	//Squad stats
-				  	winsSquad.innerHTML = res.stats.curr_p9.top1.displayValue;
-				  	killsSquad.innerHTML = res.stats.curr_p9.kills.displayValue;
-				  	winPerSquad.innerHTML = res.stats.curr_p9.winRatio.displayValue+"%";
-				  	kdSquad.innerHTML = res.stats.curr_p9.kd.displayValue;
-				  	squadRank.innerHTML = res.stats.curr_p9.trnRating.displayValue;
-				  	getTier(res.stats.curr_p9.trnRating.valueInt, 3); //Icons
-					}
 					setFocus();
 
 					$("#allStats").show();
