@@ -19,9 +19,26 @@ body{
 
 .bottom {
   bottom: 0px;
+}
+
+.right {
   right: 0px;
+}
+
+.height {
+  height: 50px;
+  width: 100%;
+}
+
+.white {
+  background: white;
 }
 
 .top-buffer { 
   margin-top: 5px; 
 }
+
+.outline {
+  border: 1px solid red;
+}
+
