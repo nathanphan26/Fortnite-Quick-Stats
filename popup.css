@@ -34,6 +34,10 @@ body{
   background: white;
 }
 
+.black {
+  background: black;
+}
+
 .top-buffer { 
   margin-top: 5px; 
 }
@@ -42,3 +46,20 @@ body{
   border: 1px solid red;
 }
 
+#soloTitle{
+  background: #17C2FE;
+  color: #034A63;
+  font-weight: 600;
+}
+
+#duoTitle{
+  background: #5CFC7B;
+  color: #21592C;
+  font-weight: 600;
+}
+
+#squadTitle{
+  background: #C272D9;
+  color: #45294D;
+  font-weight: 600;
+}
