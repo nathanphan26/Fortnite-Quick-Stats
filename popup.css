@@ -1,6 +1,6 @@
 :root {
-  --main-body-width: 400px;
-  --main-body-height: 200px;
+  --main-body-width: 450px;
+  --main-body-height: 350px;
 }
 
 html{
@@ -13,7 +13,7 @@ html{
 
 body{
   width: var(--main-body-width);
-  /* height: var(--main-body-height); */
+  height: var(--main-body-height);
   /* color: white; */
 }
 
