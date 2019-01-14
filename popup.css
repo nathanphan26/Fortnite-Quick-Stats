@@ -17,6 +17,10 @@ body{
   /* color: white; */
 }
 
+.max-height {
+  height: 100%;
+}
+
 .bottom {
   bottom: 0px;
 }
