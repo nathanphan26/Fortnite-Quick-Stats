@@ -1,20 +1,21 @@
 :root {
-  --main-body-width: 450px;
-  --main-body-height: 350px;
+  --body-width: 450px;
+  --body-height: 350px;
+  --body-background: #1F1F1F;
+  
 }
 
 html{
   font-family: 'Roboto', sans-serif;
-  background: #1F1F1F;
   font-size: 12px;
   margin: 0;
   padding: 0;
 }
 
 body{
-  width: var(--main-body-width);
-  height: var(--main-body-height);
-  /* color: white; */
+  width: var(--body-width);
+  height: var(--body-height);
+  background: var(--body-background) !important;
 }
 
 .max-height {
@@ -31,6 +32,7 @@ body{
 
 #usernameContainer {
   height: 11%;
+  margin-top: 5px; 
 }
 
 #username {
@@ -48,6 +50,7 @@ body{
 .stats-row {
   height: 25%;
   display: flex;
+  background: #292929;
 }
 
 .stats-title {
@@ -73,6 +76,7 @@ body{
 .rank-row {
   height: 20%;
   display: flex;
+  background: #363636;
 }
 
 .rank-image {
@@ -96,25 +100,9 @@ body{
   right: 0px;
 }
 
-.height {
-  height: 50px;
-  width: 100%;
-}
-
-.white {
-  background: white;
-}
-
-.black {
-  background: black;
-}
-
-.top-buffer { 
-  margin-top: 5px; 
-}
-
-.outline {
-  border: 1px solid red;
+.round-edges {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 #soloTitle{
