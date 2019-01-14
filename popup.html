@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="popup.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,132 +13,184 @@
 <body class="bg-dark">
   <div class="container max-height">
 
-    <div class="row" style="height: 10%;">
+    <!-- HEADER CONTAINER -->
+    <div class="row" id="headerContainer">
         <div class="col-9 pl-3 position-relative">
-        <h2 class="mb-0 text-white position-absolute bottom">FortniteQuickStats</h5>
+            <h2 class="mb-0 text-white position-absolute bottom">FortniteQuickStats</h5>
         </div>
         <div class="col-3 position-relative">
-        <h6 class="mb-0 pr-3 text-white position-absolute bottom right">Version</h6>
+            <h6 class="mb-0 pr-3 text-white position-absolute bottom right">Version</h6>
         </div>
     </div>
 
-    <div class="row mt-1" style="height:9%;">
+    <!-- SEARCH CONTAINER -->
+    <div class="row mt-1" id="searchContainer" style="height:9%;">
         <form class="col-12 pl-3 pr-1">
-            <div class="form-row" style="height:100%;">
+            <div class="form-row max-height">
                 <div class="form-group col-10 mb-0">
-                    <input type="text" class="form-control input-sm" id="epicUsername" name="epicUsername" placeholder="Search player name..." style="height:100%;">
+                    <input type="text" 
+                        class="form-control input-sm max-height" 
+                        id="epicUsername" 
+                        name="epicUsername" 
+                        placeholder="Search player name..."
+                    >
                 </div>
                 <div class="form-group col-2 mb-0">
-                    <button type="submit" class="btn btn-light" style="height:100%;">Search</button>
+                    <button type="submit" class="btn btn-light max-height">Search</button>
                 </div>
             </div>
         </form>
     </div>
 
-    <div class="row top-buffer" style="height:11%">
-            <div class="col-12 pl-3 pr-1 position-relative">
-                <img src="images/avatar1.png" alt="avatar" id="avatar" class="img-thumbnail" style="height: 100%;">
-                <span class="text-white pl-2 position-absolute bottom" style="font-size: 5vh;">Insert Name Here</span>
-            </div>
+    <!-- USERNAME CONTAINER -->
+    <div class="row top-buffer" id="usernameContainer">
+        <div class="col-12 pl-3 pr-1 position-relative">
+            <img src="images/avatar1.png" alt="avatar" class="img-thumbnail max-height">
+            <span class="text-white pl-2 position-absolute bottom" id="username">Insert Name Here</span>
+        </div>
     </div>
 
-    <div class="row mt-2 justify-content-center" style="height: 60%;">
+    <!-- PROFILE CONTAINER -->
+    <div class="row mt-2 justify-content-center" id="profileContainer">
 
+        <!-- SOLO COLUMN -->
         <div class="col-4 px-2">
-            <div class="col-12 height bg-dark" style="height: 100%;">
-
+            <div class="col-12 bg-dark max-height">
+                <!-- SOLO ROW -->
                 <div class="row" id="soloTitle">
-                    <span class="pl-2 pt-1" style="height:12%">SOLOS</span>
+                    <span class="pl-2 pt-1 modeTitle">SOLOS</span>
+                </div>
+                <!-- RANK ROW -->
+                <div class="row bg-secondary rank-row">
+                    <img src="images/tier1.png" alt="tier1" class="rank-image">
+                    <span class="text-white pr-3 rank-text">1,200</span>
                 </div>
 
-                <div class="row bg-secondary" style="height: 20%; display: flex;">
-                    <img src="images/tier1.png" alt="tier1" style="height: 100%; flex: 1;">
-                    <span class="text-white pr-3" style="flex: 3; display: flex; justify-content: center;flex-direction: column; text-align: right;">1,200</span>
-                </div>
-
-                <div class="row bg-light" style="height: 17%; display: flex;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Wins:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">3</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Win %:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">4.10%</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Kills:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">322</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">K/D:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">3.0</span>
+                <!-- STATS CONTAINER -->
+                <div class="row stats-container">
+                    <div class="col-12">
+                        <!-- WINS -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Wins:</span>
+                            <span class="pr-3 stats-data">3</span>
+                        </div>
+                        <!-- WIN % -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Win %:</span>
+                            <span class="pr-3 stats-data">4.10%</span>
+                        </div>
+                        <!-- KILLS -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Kills:</span>
+                            <span class="pr-3 stats-data">322</span>
+                        </div>
+                        <!-- K/D -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2">K/D:</span>
+                            <span class="pr-3 stats-title stats-data">3.0</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
 
+        <!-- DUOS COLUMN -->
         <div class="col-4 px-2">
-            <div class="col-12 height bg-dark" style="height: 100%;">
+            <div class="col-12 bg-dark max-height">
+                <!-- DUOS ROW -->
                 <div class="row" id="duoTitle">
-                    <span class="pl-2 pt-1" style="height:12%">DUOS</span>
+                    <span class="pl-2 pt-1 modeTitle">DUOS</span>
+                </div>
+                <!-- RANK ROW -->
+                <div class="row bg-secondary rank-row">
+                    <img src="images/tier1.png" alt="tier1" class="rank-image">
+                    <span class="text-white pr-3 rank-text">1,200</span>
                 </div>
                 
-                <div class="row bg-secondary" style="height: 20%; display: flex;">
-                    <img src="images/tier1.png" alt="tier1" style="height: 100%; flex: 1;">
-                    <span class="text-white pr-3" style="flex: 3; display: flex; justify-content: center;flex-direction: column; text-align: right;">1,200</span>
-                </div>
-                
-                <div class="row bg-light" style="height: 17%; display: flex;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Wins:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">3</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Win %:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">4.10%</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Kills:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">322</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">K/D:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">3.0</span>
+                <!-- STATS CONTAINER -->
+                <div class="row stats-container">
+                    <div class="col-12">
+                        <!-- WINS -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Wins:</span>
+                            <span class="pr-3 stats-data">3</span>
+                        </div>
+                        <!-- WIN % -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Win %:</span>
+                            <span class="pr-3 stats-data">4.10%</span>
+                        </div>
+                        <!-- KILLS -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Kills:</span>
+                            <span class="pr-3 stats-data">322</span>
+                        </div>
+                        <!-- K/D -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2">K/D:</span>
+                            <span class="pr-3 stats-title stats-data">3.0</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
 
+        <!-- SQUADS COLUMN -->
         <div class="col-4 px-2">
-            <div class="col-12 height bg-dark" style="height: 100%;">
+            <div class="col-12 bg-dark max-height">
+                <!-- SQUAD ROW -->
                 <div class="row" id="squadTitle">
-                    <span class="pl-2 pt-1" style="height:12%">SQUADS</span>
+                    <span class="pl-2 pt-1 modeTitle">SQUADS</span>
                 </div>
-                <div class="row bg-secondary" style="height: 20%; display: flex;">
-                    <img src="images/tier1.png" alt="tier1" style="height: 100%; flex: 1;">
-                    <span class="text-white pr-3" style="flex: 3; display: flex; justify-content: center;flex-direction: column; text-align: right;">1,200</span>
+                <!-- RANK ROW -->
+                <div class="row bg-secondary rank-row">
+                    <img src="images/tier1.png" alt="tier1" class="rank-image">
+                    <span class="text-white pr-3 rank-text">1,200</span>
                 </div>
-                <div class="row bg-light" style="height: 17%; display: flex;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Wins:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">3</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Win %:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">4.10%</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">Kills:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">322</span>
-                </div>
-                <div class="row bg-light" style="height: 17%;">
-                    <span class="pl-2" style="flex: 2; display: flex; justify-content: center; flex-direction: column; text-align: left;">K/D:</span>
-                    <span class="pr-3" style="flex: 3; display: flex; justify-content: center; flex-direction: column; text-align: right;">3.0</span>
-                </div>
-            </div>
 
+                <!-- STATS CONTAINER -->
+                <div class="row stats-container">
+                    <div class="col-12">
+                        <!-- WINS -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Wins:</span>
+                            <span class="pr-3 stats-data">3</span>
+                        </div>
+                        <!-- WIN % -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Win %:</span>
+                            <span class="pr-3 stats-data">4.10%</span>
+                        </div>
+                        <!-- KILLS -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2 stats-title">Kills:</span>
+                            <span class="pr-3 stats-data">322</span>
+                        </div>
+                        <!-- K/D -->
+                        <!-- STATS ROW -->
+                        <div class="row bg-secondary stats-row">
+                            <span class="pl-2">K/D:</span>
+                            <span class="pr-3 stats-title stats-data">3.0</span>
+                        </div>
+                    </div>
+                </div>
             
-
+            </div>
         </div>
-    </div>
 
-  </div>
+    </div>
 </body>
 </html>

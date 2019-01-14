@@ -18,7 +18,74 @@ body{
 }
 
 .max-height {
+  height: 100% !important;
+}
+
+#headerContainer {
+  height: 10%;
+}
+
+#searchContainer {
+  height: 9%;
+}
+
+#usernameContainer {
+  height: 11%;
+}
+
+#username {
+  font-size: 5vh;
+}
+
+#profileContainer {
+  height: 60%;
+}
+
+.stats-container {
+  height: 68%;
+}
+
+.stats-row {
+  height: 25%;
+  display: flex;
+}
+
+.stats-title {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.stats-data {
+  display: flex;
+  flex: 3;
+  justify-content: center;
+  flex-direction: column;
+  text-align: right;
+}
+
+.modeTitle {
+  height: 12%;
+}
+
+.rank-row {
+  height: 20%;
+  display: flex;
+}
+
+.rank-image {
   height: 100%;
+  flex: 1;
+}
+
+.rank-text {
+  display: flex;
+  flex: 3;
+  justify-content: center;
+  flex-direction: column;
+  text-align: right;
 }
 
 .bottom {
