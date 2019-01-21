@@ -1,0 +1,151 @@
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 450px;
+  height: 100%;
+  background: #191919 !important;
+}
+
+body #brandContainer {
+  height: 42px;
+}
+
+body #searchContainer {
+  height: 24px;
+}
+
+body #usernameContainer {
+  height: 39px;
+  margin-top: 5px;
+}
+
+body #usernameContainer #username {
+  font-size: 5vh;
+}
+
+body #profileContainer {
+  height: 210px;
+}
+
+body #profileContainer #soloTitle {
+  background: #17C2FE;
+  color: #034A63;
+  font-weight: 600;
+}
+
+body #profileContainer #duoTitle {
+  background: #5CFC7B;
+  color: #21592C;
+  font-weight: 600;
+}
+
+body #profileContainer #squadTitle {
+  background: #C272D9;
+  color: #45294D;
+  font-weight: 600;
+}
+
+.max-height {
+  height: 100% !important;
+}
+
+.stats-container {
+  height: 68%;
+}
+
+.stats-row {
+  height: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #12212b;
+}
+
+.stats-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+}
+
+.stats-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: right;
+}
+
+.modeTitle {
+  height: 12%;
+}
+
+.rank-row {
+  height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #0f2c3d;
+}
+
+.rank-image {
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.rank-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: right;
+}
+
+.bottom {
+  bottom: 0px;
+}
+
+.right {
+  right: 0px;
+}
+
+.round-edges {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+/*# sourceMappingURL=main.css.map */

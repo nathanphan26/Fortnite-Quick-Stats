@@ -1,0 +1,135 @@
+$body-width: 450px;
+$body-height: 100%;
+// $body-height: 350px;
+$main-color: #191919;
+$text-color: white;
+$rank-color: #0f2c3d;
+$stats-color: #12212b;
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: $body-width;
+  height: $body-height;
+  background: $main-color !important;
+
+  // 42px
+  #brandContainer {
+    // height: 12%;
+    height: 42px;
+  }
+
+  // 24.5px
+  #searchContainer {
+    // height: 7%;
+    height: 24px;
+  }
+
+  // 38.5px
+  #usernameContainer {
+      // height: 11%;
+      height: 39px;
+      margin-top: 5px; 
+
+      #username {
+        font-size: 5vh;
+      }
+
+  }
+
+  // 210px
+  #profileContainer {
+    // height: 60%;
+    height: 210px;
+
+    #soloTitle{
+      background: #17C2FE;
+      color: #034A63;
+      font-weight: 600;
+    }
+
+    #duoTitle{
+      background: #5CFC7B;
+      color: #21592C;
+      font-weight: 600;
+    }
+    
+    #squadTitle{
+      background: #C272D9;
+      color: #45294D;
+      font-weight: 600;
+    }
+  }
+
+}
+
+.max-height {
+  height: 100% !important;
+}
+
+.stats-container {
+  height: 68%;
+}
+
+.stats-row {
+  height: 25%;
+  display: flex;
+  background: $stats-color;
+}
+
+.stats-title {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.stats-data {
+  display: flex;
+  flex: 3;
+  justify-content: center;
+  flex-direction: column;
+  text-align: right;
+}
+
+.modeTitle {
+  height: 12%;
+}
+
+.rank-row {
+  height: 20%;
+  display: flex;
+  background: $rank-color;
+}
+
+.rank-image {
+  height: 100%;
+  flex: 1;
+}
+
+.rank-text {
+  display: flex;
+  flex: 3;
+  justify-content: center;
+  flex-direction: column;
+  text-align: right;
+}
+
+.bottom {
+  bottom: 0px;
+}
+
+.right {
+  right: 0px;
+}
+
+.round-edges {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}

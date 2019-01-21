@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="popup.css" rel="stylesheet">
+    <!-- <link href="popup.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Fortnite Quick Stats</title>
 </head>
@@ -24,21 +25,25 @@
 
     <!-- SEARCH CONTAINER -->
     <div class="row mt-1" id="searchContainer">
-        <form class="col-12 pl-3 pr-1">
+        <div class="col-12 pl-3 pr-0">
             <div class="form-row max-height">
                 <div class="form-group col-10 mb-0">
                     <input type="text" 
-                        class="form-control input-sm max-height" 
+                        class="form-control input-sm max-height"
                         id="epicUsername" 
                         name="epicUsername" 
                         placeholder="Search player name..."
                     >
                 </div>
                 <div class="form-group col-2 mb-0">
-                    <button type="submit" class="btn btn-light max-height">Search</button>
+                    <select class="max-height" name="platformSelect" id="platformSelect">
+                        <option value="pc">PC</option>
+                        <option value="psn">PS4</option>
+                        <option value="xbl">Xbox</option>
+                    </select>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 
     <!-- USERNAME CONTAINER -->
@@ -54,15 +59,15 @@
 
         <!-- SOLO COLUMN -->
         <div class="col-4 px-2" >
-            <div class="col-12 bg-dark max-height">
+            <div class="col-12 max-height">
                 <!-- SOLO ROW -->
                 <div class="row round-edges" id="soloTitle">
                     <span class="pl-2 pt-1 modeTitle">SOLOS</span>
                 </div>
                 <!-- RANK ROW -->
                 <div class="row rank-row">
-                    <img src="images/tier1.png" alt="tier1" class="rank-image">
-                    <span class="text-white pr-3 rank-text">1,200</span>
+                    <img src="images/tier1.png" alt="tier1" class="rank-image" id="soloImg">
+                    <span class="text-white pr-3 rank-text" id="soloRank">1,200</span>
                 </div>
 
                 <!-- STATS CONTAINER -->
@@ -72,25 +77,25 @@
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Wins:</span>
-                            <span class="pr-3 stats-data">3</span>
+                            <span class="pr-3 stats-data" id="soloWins">3</span>
                         </div>
                         <!-- WIN % -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Win %:</span>
-                            <span class="pr-3 stats-data">4.10%</span>
+                            <span class="pr-3 stats-data" id="soloWinsPercent">4.10%</span>
                         </div>
                         <!-- KILLS -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Kills:</span>
-                            <span class="pr-3 stats-data">322</span>
+                            <span class="pr-3 stats-data" id="soloKills">322</span>
                         </div>
                         <!-- K/D -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">K/D:</span>
-                            <span class="pr-3 stats-data">3.0</span>
+                            <span class="pr-3 stats-data" id="soloKD">3.0</span>
                         </div>
                     </div>
                 </div>
@@ -100,15 +105,15 @@
 
         <!-- DUOS COLUMN -->
         <div class="col-4 px-2">
-            <div class="col-12 bg-dark max-height">
+            <div class="col-12 max-height">
                 <!-- DUOS ROW -->
                 <div class="row round-edges" id="duoTitle">
                     <span class="pl-2 pt-1 modeTitle">DUOS</span>
                 </div>
                 <!-- RANK ROW -->
                 <div class="row rank-row">
-                    <img src="images/tier1.png" alt="tier1" class="rank-image">
-                    <span class="text-white pr-3 rank-text">1,200</span>
+                    <img src="images/tier1.png" alt="tier1" class="rank-image" id="duoImg">
+                    <span class="text-white pr-3 rank-text" id="duoRank">1,200</span>
                 </div>
                 
                 <!-- STATS CONTAINER -->
@@ -118,25 +123,25 @@
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Wins:</span>
-                            <span class="pr-3 stats-data">3</span>
+                            <span class="pr-3 stats-data" id="duoWins">3</span>
                         </div>
                         <!-- WIN % -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Win %:</span>
-                            <span class="pr-3 stats-data">4.10%</span>
+                            <span class="pr-3 stats-data" id="duoWinsPercent">4.10%</span>
                         </div>
                         <!-- KILLS -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Kills:</span>
-                            <span class="pr-3 stats-data">322</span>
+                            <span class="pr-3 stats-data" id="duoKills">322</span>
                         </div>
                         <!-- K/D -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">K/D:</span>
-                            <span class="pr-3 stats-data">3.0</span>
+                            <span class="pr-3 stats-data" id="duoKD">3.0</span>
                         </div>
                     </div>
                 </div>
@@ -146,15 +151,15 @@
 
         <!-- SQUADS COLUMN -->
         <div class="col-4 px-2">
-            <div class="col-12 bg-dark max-height">
+            <div class="col-12 max-height">
                 <!-- SQUAD ROW -->
                 <div class="row round-edges" id="squadTitle">
                     <span class="pl-2 pt-1 modeTitle">SQUADS</span>
                 </div>
                 <!-- RANK ROW -->
                 <div class="row rank-row">
-                    <img src="images/tier1.png" alt="tier1" class="rank-image">
-                    <span class="text-white pr-3 rank-text">1,200</span>
+                    <img src="images/tier1.png" alt="tier1" class="rank-image" id="squadImg">
+                    <span class="text-white pr-3 rank-text" id="squadRank">1,200</span>
                 </div>
 
                 <!-- STATS CONTAINER -->
@@ -164,25 +169,25 @@
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Wins:</span>
-                            <span class="pr-3 stats-data">3</span>
+                            <span class="pr-3 stats-data" id="squadWins">3</span>
                         </div>
                         <!-- WIN % -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Win %:</span>
-                            <span class="pr-3 stats-data">4.10%</span>
+                            <span class="pr-3 stats-data" id="squadWinsPercent">4.10%</span>
                         </div>
                         <!-- KILLS -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">Kills:</span>
-                            <span class="pr-3 stats-data">322</span>
+                            <span class="pr-3 stats-data" id="squadKills">322</span>
                         </div>
                         <!-- K/D -->
                         <!-- STATS ROW -->
                         <div class="row text-white stats-row">
                             <span class="pl-2 stats-title">K/D:</span>
-                            <span class="pr-3 stats-data">3.0</span>
+                            <span class="pr-3 stats-data" id="squadKD">3.0</span>
                         </div>
                     </div>
                 </div>
@@ -191,5 +196,6 @@
         </div>
 
     </div>
+    <script type="application/javascript" src="popup.js"></script>
 </body>
 </html>

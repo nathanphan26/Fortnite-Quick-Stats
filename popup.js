@@ -1,174 +1,113 @@
-var winsSolo = document.querySelector('#winsSolo');
-var killsSolo = document.querySelector('#killsSolo');
-var winPerSolo = document.querySelector('#winPerSolo');
-var kdSolo = document.querySelector('#kdSolo');
+var usernameContainer = document.querySelector('#usernameContainer');
+var profileContainer = document.querySelector('#profileContainer');
+
+var searchBar = document.querySelector('#epicUsername');
+var username = document.querySelector('#username');
+var platformSelect = document.querySelector('#platformSelect');
+
+var soloImg = document.querySelector('#soloImg')
+var duoImg = document.querySelector('#duoImg')
+var squadImg = document.querySelector('#squadImg')
 var soloRank = document.querySelector('#soloRank');
+var soloWins = document.querySelector('#soloWins');
+var soloWinsPercent = document.querySelector('#soloWinsPercent');
+var soloKills = document.querySelector('#soloKills');
+var soloKD = document.querySelector('#soloKD');
 
-var winsDuo = document.querySelector('#winsDuo');
-var killsDuo = document.querySelector('#killsDuo');
-var winPerDuo = document.querySelector('#winPerDuo');
-var kdDuo = document.querySelector('#kdDuo');
 var duoRank = document.querySelector('#duoRank');
+var duoWins = document.querySelector('#duoWins');
+var duoWinsPercent = document.querySelector('#duoWinsPercent');
+var duoKills = document.querySelector('#duoKills');
+var duoKD = document.querySelector('#duoKD');
 
-var winsSquad = document.querySelector('#winsSquad');
-var killsSquad = document.querySelector('#killsSquad');
-var winPerSquad = document.querySelector('#winPerSquad');
-var kdSquad = document.querySelector('#kdSquad');
 var squadRank = document.querySelector('#squadRank');
+var squadWins = document.querySelector('#squadWins');
+var squadWinsPercent = document.querySelector('#squadWinsPercent');
+var squadKills = document.querySelector('#squadKills');
+var squadKD = document.querySelector('#squadKD');
 
-var searchBar = document.querySelector('#searchName');
+searchBar.addEventListener('keydown', searchProfile);
 
-// Clears and sets focus on search bar
-function setFocus() {
-	searchBar.value = '';
-	searchBar.focus();
+function searchProfile(e) {
+  console.log(e.keyCode)
+  if(e.keyCode === 13) {
+    createRequest(searchBar.value, platformSelect.value)
+  }
 }
 
-// Gets images for different tiers
-function getTier(rating, mode){
-	var img;
-	if(mode == 1){
-		img = document.getElementById('soloImg');
-	}
-	else if(mode == 2){
-		img = document.getElementById('duoImg');
-	}
-	else if(mode == 3){
-		img = document.getElementById('squadImg');
-	}
-
-	if(rating >= 0 && rating < 1500){
-		img.src = 'images/tier1.png';
-	}
-	else if(rating >= 1500 && rating < 3000){
-		img.src = 'images/tier2.png';
-	}
-	else if(rating >= 3000 && rating < 4000){
-		img.src = 'images/tier3.png';
-	}
-	else if(rating >= 4000 && rating < 4500){
-		img.src = 'images/tier4.png';
-	}
-	else if(rating >= 4500){
-		img.src = 'images/tier5.png';
-	}
+function createRequest(username, platform) {
+  let url = `https://api.fortnitetracker.com/v1/profile/${platform}/${username}`;
+  console.log(url);
+  let request = new Request(url, {
+    method: 'GET',
+    headers: new Headers({
+      'trn-api-key': 'e4060f2a-df44-45a7-8ca5-3938e2c2a631'
+    })
+  });
+  getProfile(request);
 }
 
-// API call
-function getStats(url, options = false){
-	var param;
-
-	/* To be used for special effects */
-	$("#error").hide();
-	$("#nameContainer").hide();
-	$("#allStats").hide();
-	/* ------------------------------ */
-
-	$.get("includes/help.stats", function(data) {
-		param = {
-			headers:{
-				"trn-api-key": data
-			},
-			method: "GET"
-		};
-
-		fetch(url,param)
-		  .then(data=>{	// Data Check
-		  	if(!data.ok) throw Error(data.statusText);
-		  	return data.json()
-		  })
-		  .then(res=>{
-		  	if(res.error){	// Username not found
-					$('#error').show();
-					if(options) $('#errorHtml').html('Error: Saved username is invalid'); // Error via options
-					else $('#errorHtml').html('player not found'); // Error via popup
-		  		setFocus();
-		  	}
-		  	else{
-			  	document.getElementById('name').innerHTML = res.epicUserHandle; // Display name // Wtf why cant I change this
-					let prefix = '';
-					if(res.stats.curr_p2 != null) prefix = 'curr_';
-					// Solo stats
-			  	winsSolo.innerHTML = res.stats[`${prefix}p2`].top1.displayValue;
-			  	killsSolo.innerHTML = res.stats[`${prefix}p2`].kills.displayValue;
-			  	winPerSolo.innerHTML = res.stats[`${prefix}p2`].winRatio.displayValue+"%";
-			  	kdSolo.innerHTML = res.stats[`${prefix}p2`].kd.displayValue;
-			  	soloRank.innerHTML = res.stats[`${prefix}p2`].trnRating.displayValue;
-
-			  	// Duo stats
-			  	winsDuo.innerHTML = res.stats[`${prefix}p10`].top1.displayValue;
-			  	killsDuo.innerHTML = res.stats[`${prefix}p10`].kills.displayValue;
-			  	winPerDuo.innerHTML = res.stats[`${prefix}p10`].winRatio.displayValue+"%";
-			  	kdDuo.innerHTML = res.stats[`${prefix}p10`].kd.displayValue;
-			  	duoRank.innerHTML = res.stats[`${prefix}p10`].trnRating.displayValue;
-
-			  	//Squad stats
-			  	winsSquad.innerHTML = res.stats[`${prefix}p9`].top1.displayValue;
-			  	killsSquad.innerHTML = res.stats[`${prefix}p9`].kills.displayValue;
-			  	winPerSquad.innerHTML = res.stats[`${prefix}p9`].winRatio.displayValue+"%";
-			  	kdSquad.innerHTML = res.stats[`${prefix}p9`].kd.displayValue;
-			  	squadRank.innerHTML = res.stats[`${prefix}p9`].trnRating.displayValue;
-
-					getTier(res.stats[`${prefix}p2`].trnRating.valueInt, 1); //Icons
-					getTier(res.stats[`${prefix}p10`].trnRating.valueInt, 2); //Icons
-			  	getTier(res.stats[`${prefix}p9`].trnRating.valueInt, 3); //Icons
-
-					setFocus();
-
-					$("#allStats").show();
-					$("#nameContainer").show();
-			  }
-		  }).
-		  catch(error=>{
-		  	console.log(error);
-		  	alert("Please enter username");
-		  	setFocus();
-		  });
-	});
+function getProfile(request) {
+  fetch(request)
+    .then(res => res.json())
+    .then(data => parseProfile(data))
+    .catch(err => console.error(err));
 }
 
-$(function() {
+function parseProfile(data) {
+  let solo = data.stats.p2;
+  let duo = data.stats.p10;
+  let squad = data.stats.p9;
 
-  // Updates version number
-	$('#ver').text(function(){
-		var manifest = chrome.runtime.getManifest();
-		console.log(manifest);
-		return "v" + manifest.version;
-	});
+  username.textContent = data.epicUserHandle;
+  // Solo Stats
+  soloRank.textContent = solo.trnRating.displayValue;
+  soloWins.textContent = solo.top1.displayValue;
+  soloWinsPercent.textContent = solo.winRatio.displayValue;
+  soloKills.textContent = solo.kills.displayValue;
+  soloKD.textContent = solo.kd.displayValue;
+  // Duo Stats
+  duoRank.textContent = duo.trnRating.displayValue; 
+  duoWins.textContent = duo.top1.displayValue;
+  duoWinsPercent.textContent = duo.winRatio.displayValue;
+  duoKills.textContent = duo.kills.displayValue;
+  duoKD.textContent = duo.kd.displayValue;
+  // Squad Stats
+  squadRank.textContent = squad.trnRating.displayValue;
+  squadWins.textContent = squad.top1.displayValue;
+  squadWinsPercent.textContent = squad.winRatio.displayValue;
+  squadKills.textContent = squad.kills.displayValue;
+  squadKD.textContent = squad.kd.displayValue;
 
-	// Hide all stats when loaded
-	$(document).ready(function() {
-		$("#error").hide();
-		$("#nameContainer").hide();
-		$("#allStats").hide();
-	});
+  setRankImage(solo.trnRating.valueInt, duo.trnRating.valueInt, squad.trnRating.valueInt);
+}
 
-	// If username was stored
-	chrome.storage.sync.get(['epicName'], function(result) { // Retrieves username from chrome storage
-		if(result.epicName != 'undefined'){ // If username isn't undefined search username
+function between(num, min, max) {
+  return num<=max && num>=min;
+}
 
-			chrome.storage.sync.get(['epicPlatform'], function(result2) { // Retrieves platform from chrome storage
-				$('#platform').val(result2.epicPlatform);
+function setRankImage(soloRank, duoRank, squadRank) {
+  if(between(soloRank, 0, 1499)) soloImg.src = 'images/tier1.png';
+  else if(between(soloRank, 1500, 2999)) soloImg.src = 'images/tier2.png';
+  else if(between(soloRank, 3000, 3999)) soloImg.src = 'images/tier3.png';
+  else if(between(soloRank, 4000, 4499)) soloImg.src = 'images/tier4.png';
+  else if(soloRank >= 4500) soloImg.src = 'images/tier5.png';
 
-				var url = 'https://api.fortnitetracker.com/v1/profile/'; // Set url
-				var platformChoice = result2.epicPlatform; // Set platform
-		    var epicName = result.epicName; // Set username
-		    url = url + platformChoice + '/' + epicName; // Concatonate url
-				getStats(url, true);
-			});
+  if(between(duoRank, 0, 1499)) duoImg.src = 'images/tier1.png';
+  else if(between(duoRank, 1500, 2999)) duoImg.src = 'images/tier2.png';
+  else if(between(duoRank, 3000, 3999)) duoImg.src = 'images/tier3.png';
+  else if(between(duoRank, 4000, 4499)) duoImg.src = 'images/tier4.png';
+  else if(duoRank >= 4500) duoImg.src = 'images/tier5.png';
 
-		}
-	});
+  if(between(squadRank, 0, 1499)) squadImg.src = 'images/tier1.png';
+  else if(between(squadRank, 1500, 2999)) squadImg.src = 'images/tier2.png';
+  else if(between(squadRank, 3000, 3999)) squadImg.src = 'images/tier3.png';
+  else if(between(squadRank, 4000, 4499)) squadImg.src = 'images/tier4.png';
+  else if(squadRank >= 4500) squadImg.src = 'images/tier5.png';
+}
 
-	// If username is searched
-	$('#searchName').keydown(function (e) {
-		if(e.keyCode == 13) {
-			var url = 'https://api.fortnitetracker.com/v1/profile/';
-			var platform = document.getElementById('platform');
-			var platformChoice = platform.options[platform.selectedIndex].value;
-			var epicName = $('#searchName').val();
-			url = url + platformChoice + '/' + epicName;
-			getStats(url);
-		}
-	})
+document.addEventListener("DOMContentLoaded", function(){
+  // Handler when the DOM is fully loaded
+  usernameContainer.style.display = "none";
+  profileContainer.style.display = "none";
 });
