@@ -24,8 +24,12 @@ body #usernameContainer {
   margin-top: 5px;
 }
 
+body #usernameContainer #avatar {
+  border-radius: 50%;
+}
+
 body #usernameContainer #username {
-  font-size: 5vh;
+  font-size: 6vh;
 }
 
 body #profileContainer {

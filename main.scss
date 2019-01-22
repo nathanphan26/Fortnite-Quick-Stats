@@ -36,8 +36,12 @@ body {
       height: 39px;
       margin-top: 5px; 
 
+      #avatar {
+        border-radius: 50%;
+      }
+
       #username {
-        font-size: 5vh;
+        font-size: 6vh;
       }
 
   }

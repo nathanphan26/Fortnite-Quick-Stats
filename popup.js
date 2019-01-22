@@ -1,10 +1,13 @@
+
+/************************** VARIABLES **************************/
+// CONTAINERS
 var usernameContainer = document.querySelector('#usernameContainer');
 var profileContainer = document.querySelector('#profileContainer');
-
-var searchBar = document.querySelector('#epicUsername');
+// SEARCH BAR
+var searchBar = document.querySelector('#searchBar');
 var username = document.querySelector('#username');
 var platformSelect = document.querySelector('#platformSelect');
-
+// SOLO
 var soloImg = document.querySelector('#soloImg')
 var duoImg = document.querySelector('#duoImg')
 var squadImg = document.querySelector('#squadImg')
@@ -13,21 +16,34 @@ var soloWins = document.querySelector('#soloWins');
 var soloWinsPercent = document.querySelector('#soloWinsPercent');
 var soloKills = document.querySelector('#soloKills');
 var soloKD = document.querySelector('#soloKD');
-
+// DUO
 var duoRank = document.querySelector('#duoRank');
 var duoWins = document.querySelector('#duoWins');
 var duoWinsPercent = document.querySelector('#duoWinsPercent');
 var duoKills = document.querySelector('#duoKills');
 var duoKD = document.querySelector('#duoKD');
-
+// SQUAD
 var squadRank = document.querySelector('#squadRank');
 var squadWins = document.querySelector('#squadWins');
 var squadWinsPercent = document.querySelector('#squadWinsPercent');
 var squadKills = document.querySelector('#squadKills');
 var squadKD = document.querySelector('#squadKD');
+/***************************************************************/
 
+// Event Listeners
+document.addEventListener("DOMContentLoaded", function(){
+  // Handler when the DOM is fully loaded
+  searchBar.focus();
+  usernameContainer.style.display = "none";
+  profileContainer.style.display = "none";
+});
 searchBar.addEventListener('keydown', searchProfile);
 
+/*
+ * searchProfile() checks if key pressed is 'enter' key
+ *
+ * @param {Element} e
+ */
 function searchProfile(e) {
   console.log(e.keyCode)
   if(e.keyCode === 13) {
@@ -35,9 +51,14 @@ function searchProfile(e) {
   }
 }
 
+/*
+ * createRequest() constructs Request object
+ *
+ * @param {String} username
+ * @param {String} platform
+ */
 function createRequest(username, platform) {
   let url = `https://api.fortnitetracker.com/v1/profile/${platform}/${username}`;
-  console.log(url);
   let request = new Request(url, {
     method: 'GET',
     headers: new Headers({
@@ -47,6 +68,11 @@ function createRequest(username, platform) {
   getProfile(request);
 }
 
+/*
+ * getProfile() fetches request configuration
+ *
+ * @param {Request} request
+ */
 function getProfile(request) {
   fetch(request)
     .then(res => res.json())
@@ -54,6 +80,11 @@ function getProfile(request) {
     .catch(err => console.error(err));
 }
 
+/*
+ * parseProfile() updates DOM nodes with correct data
+ *
+ * @param {Object} data
+ */
 function parseProfile(data) {
   let solo = data.stats.p2;
   let duo = data.stats.p10;
@@ -80,16 +111,38 @@ function parseProfile(data) {
   squadKD.textContent = squad.kd.displayValue;
 
   setRankImage(solo.trnRating.valueInt, duo.trnRating.valueInt, squad.trnRating.valueInt);
+  resetSearchBar();
+}
+
+/*
+ * resetSearchBar() unhides profile containers and clears search bar
+ */
+function resetSearchBar() {
   usernameContainer.style.display = "flex";
   profileContainer.style.display = "flex";
   searchBar.value = '';
   searchBar.focus();
 }
 
+/*
+ * between() checks if num is between min and max inclusively
+ *
+ * @params {Number} num
+ * @params {Number} min
+ * @params {Number} max
+ * @return {Boolean}
+ */
 function between(num, min, max) {
   return num<=max && num>=min;
 }
 
+/*
+ * setRankImage() displays image according to ranking
+ *
+ * @params {Number} soloRank
+ * @params {Number} duoRank
+ * @params {Number} squadRank
+ */
 function setRankImage(soloRank, duoRank, squadRank) {
   if(between(soloRank, 0, 1499)) soloImg.src = 'images/tier1.png';
   else if(between(soloRank, 1500, 2999)) soloImg.src = 'images/tier2.png';
@@ -109,10 +162,3 @@ function setRankImage(soloRank, duoRank, squadRank) {
   else if(between(squadRank, 4000, 4499)) squadImg.src = 'images/tier4.png';
   else if(squadRank >= 4500) squadImg.src = 'images/tier5.png';
 }
-
-document.addEventListener("DOMContentLoaded", function(){
-  // Handler when the DOM is fully loaded
-  searchBar.focus();
-  usernameContainer.style.display = "none";
-  profileContainer.style.display = "none";
-});
