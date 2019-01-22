@@ -80,6 +80,10 @@ function parseProfile(data) {
   squadKD.textContent = squad.kd.displayValue;
 
   setRankImage(solo.trnRating.valueInt, duo.trnRating.valueInt, squad.trnRating.valueInt);
+  usernameContainer.style.display = "flex";
+  profileContainer.style.display = "flex";
+  searchBar.value = '';
+  searchBar.focus();
 }
 
 function between(num, min, max) {
@@ -108,6 +112,7 @@ function setRankImage(soloRank, duoRank, squadRank) {
 
 document.addEventListener("DOMContentLoaded", function(){
   // Handler when the DOM is fully loaded
+  searchBar.focus();
   usernameContainer.style.display = "none";
   profileContainer.style.display = "none";
 });
