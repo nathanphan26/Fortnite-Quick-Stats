@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function(){
   searchBar.focus();
   usernameContainer.style.display = "none";
   profileContainer.style.display = "none";
+  randomizeAvatar();
 });
 searchBar.addEventListener('keydown', searchProfile);
 
@@ -112,6 +113,7 @@ function parseProfile(data) {
 
   setRankImage(solo.trnRating.valueInt, duo.trnRating.valueInt, squad.trnRating.valueInt);
   resetSearchBar();
+  randomizeAvatar();
 }
 
 /*
@@ -161,4 +163,9 @@ function setRankImage(soloRank, duoRank, squadRank) {
   else if(between(squadRank, 3000, 3999)) squadImg.src = 'images/tier3.png';
   else if(between(squadRank, 4000, 4499)) squadImg.src = 'images/tier4.png';
   else if(squadRank >= 4500) squadImg.src = 'images/tier5.png';
+}
+
+function randomizeAvatar() {
+  var rand = Math.floor(Math.random() * 5) + 1; 
+  document.getElementById('avatar').src = `images/avatar${rand}.png`;
 }
