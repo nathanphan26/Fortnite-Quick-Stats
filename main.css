@@ -19,36 +19,36 @@ body #searchContainer {
   height: 24px;
 }
 
-body #usernameContainer {
+body .hidden #usernameContainer {
   height: 39px;
   margin-top: 5px;
 }
 
-body #usernameContainer #avatar {
+body .hidden #usernameContainer #avatar {
   border-radius: 50%;
 }
 
-body #usernameContainer #username {
+body .hidden #usernameContainer #username {
   font-size: 6vh;
 }
 
-body #profileContainer {
+body .hidden #profileContainer {
   height: 210px;
 }
 
-body #profileContainer #soloTitle {
+body .hidden #profileContainer #soloTitle {
   background: #17C2FE;
   color: #034A63;
   font-weight: 600;
 }
 
-body #profileContainer #duoTitle {
+body .hidden #profileContainer #duoTitle {
   background: #5CFC7B;
   color: #21592C;
   font-weight: 600;
 }
 
-body #profileContainer #squadTitle {
+body .hidden #profileContainer #squadTitle {
   background: #C272D9;
   color: #45294D;
   font-weight: 600;

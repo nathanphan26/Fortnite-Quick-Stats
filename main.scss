@@ -29,44 +29,48 @@ body {
     // height: 7%;
     height: 24px;
   }
+  .hidden {
+    // height: 20px;
+    // 38.5px
+    #usernameContainer {
+      // height: 10%;
+        // height: 11%;
+        height: 39px;
+        margin-top: 5px; 
 
-  // 38.5px
-  #usernameContainer {
-      // height: 11%;
-      height: 39px;
-      margin-top: 5px; 
+        #avatar {
+          border-radius: 50%;
+        }
 
-      #avatar {
-        border-radius: 50%;
-      }
+        #username {
+          font-size: 6vh;
+        }
 
-      #username {
-        font-size: 6vh;
-      }
-
-  }
-
-  // 210px
-  #profileContainer {
-    // height: 60%;
-    height: 210px;
-
-    #soloTitle{
-      background: #17C2FE;
-      color: #034A63;
-      font-weight: 600;
     }
 
-    #duoTitle{
-      background: #5CFC7B;
-      color: #21592C;
-      font-weight: 600;
-    }
-    
-    #squadTitle{
-      background: #C272D9;
-      color: #45294D;
-      font-weight: 600;
+    // 210px
+    #profileContainer {
+      // height: 90%;
+      // height: 60%;
+      height: 210px;
+
+      #soloTitle{
+        background: #17C2FE;
+        color: #034A63;
+        font-weight: 600;
+      }
+
+      #duoTitle{
+        background: #5CFC7B;
+        color: #21592C;
+        font-weight: 600;
+      }
+      
+      #squadTitle{
+        background: #C272D9;
+        color: #45294D;
+        font-weight: 600;
+      }
     }
   }
 
